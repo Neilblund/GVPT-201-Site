@@ -55,32 +55,144 @@
     ]
   },
   {
-    "objectID": "links.html",
-    "href": "links.html",
-    "title": "Links",
-    "section": "",
-    "text": "Some helpful links for students interested in learning more about political science, research methods, or R programming.\n\nTextbook Resources\n\nPoliSciData.com\n\nThis is the website for the course textbook. In addition to helpful guides and videos, they’ve got an excellent collection of political science data sets that are free and online. If you’re interested in doing your own analyses, this is a great place to start. You might also want to check out their YouTube page.\n\n\n\n\nNews and Analysis\n\nGood Authority\n\nGood Authority is the successor to The Monkey Cage, a blog previously hosted by the Washington Post. Its a great place to read new research and analysis of current events from a polisci perspective.\n\nLSE Blogs\n\nCommentary and analysis of global and European politics hosted by the London School of Economics.\n\nFiveThirtyEight\n\nData-driven analysis and commentary on current events and sports. Now hosted by ABC News.\n\nPew Research\n\nA non-partisan think tank that tracks public opinion in the U.S. and abroad. Their Decoded Blog offers some really nice hands-on tutorials for anyone interested in working with public opinion data.\n\n\n\n\nR\nThere are a ton of great free resources for learning more about R, and this is by no means an exhaustive list, but these are some books and tutorials that I think are especially useful if you’re interested in learning more about using R for analysis.\n\nR for data science\n\nThis is a free e-book written, appropriately, for people who want to use R for data science. The book assumes some basic knowledge of R programming, but its an excellent resource if you want to learn how to do things like build your own database from scratch or scrape the web.\n\nhttps://rforpoliticalscience.com/\n\nA blog with short posts detailing packages, data sources, and other small projects and tips all aimed at R-using political scientists.\n\nBig Book of R\n\nLinks to hundreds of free, open-source R tutorials arranged by topic.",
+    "objectID": "slides_TCh01.html#research-questions",
+    "href": "slides_TCh01.html#research-questions",
+    "title": "Chapter 1: Concepts and definitions",
+    "section": "Research Questions",
+    "text": "Research Questions\n\nDoes religion play a role in civil wars?\nWhat causes increasing income inequality in least developed countries?\nWhy has public opinion on same sex marriage liberalized so rapidly?\nIs the U.S. becoming more polarized?\n\n\nNot everyone is going to agree on what these terms mean!\n\n\nBefore we can get anywhere researching these questions, we need to define the thing we’re studying",
     "crumbs": [
-      "Resources",
-      "Links"
+      "Chapter 1: Concepts and definitions"
     ]
   },
   {
-    "objectID": "faqs.html",
-    "href": "faqs.html",
-    "title": "FAQs",
-    "section": "",
-    "text": "This is a running list of questions that have come up a lot over the semester. If you’re here, you might also want to check out the page on basic troubleshooting in R.",
+    "objectID": "slides_TCh01.html#defining-things-harder-than-it-seems",
+    "href": "slides_TCh01.html#defining-things-harder-than-it-seems",
+    "title": "Chapter 1: Concepts and definitions",
+    "section": "Defining things: harder than it seems!",
+    "text": "Defining things: harder than it seems!\n\n\n\nReasonable definition of a chair\n\n\n\n\n\n\nChair",
     "crumbs": [
-      "FAQs"
+      "Chapter 1: Concepts and definitions"
     ]
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "slides_TCh01.html#terms",
+    "href": "slides_TCh01.html#terms",
+    "title": "Chapter 1: Concepts and definitions",
+    "section": "Terms",
+    "text": "Terms\n\nConceptual Definition\n\nA description of the concrete, measurable properties of a concept and the unit of analysis to which it applies\n\nUnit of Analysis\n\nThe entity that that is being studied. For instance: individuals, governments, parties etc.\n\nOperational Definition\n\nA description of the instrument used to measure the concept",
+    "crumbs": [
+      "Chapter 1: Concepts and definitions"
+    ]
+  },
+  {
+    "objectID": "slides_TCh01.html#crafting-conceptual-definitions-unit-of-analysis",
+    "href": "slides_TCh01.html#crafting-conceptual-definitions-unit-of-analysis",
+    "title": "Chapter 1: Concepts and definitions",
+    "section": "Crafting Conceptual Definitions: Unit of Analysis",
+    "text": "Crafting Conceptual Definitions: Unit of Analysis\n\nWhat is the unit? What entity possesses the characteristic?\n\nThe U.S. and Canada are democracies (concept: democracy, unit: countries)\nLincoln, LBJ, and Trump are the three tallest U.S. presidents (concept: height, unit: presidents/people)\nLabour is the UK’s main center-left political party (concept: party ideology/family, unit: political party)",
+    "crumbs": [
+      "Chapter 1: Concepts and definitions"
+    ]
+  },
+  {
+    "objectID": "slides_TCh01.html#crafting-conceptual-definitions-key-features",
+    "href": "slides_TCh01.html#crafting-conceptual-definitions-key-features",
+    "title": "Chapter 1: Concepts and definitions",
+    "section": "Crafting Conceptual Definitions: Key features",
+    "text": "Crafting Conceptual Definitions: Key features\n\nWhat are the essential features?\n\nIf there are cases or definitions everyone agrees on, what features do they share?\nAre certain characteristics necessary or sufficient to qualify?\nWhat characteristics are most distinctive to those cases?\nWhat might change to move cases from one category to another? What is most helpful for clarifying edge-cases?\nAre there multiple dimensions or just one? If two characteristics always occur together, you might only need to account for one of them!",
+    "crumbs": [
+      "Chapter 1: Concepts and definitions"
+    ]
+  },
+  {
+    "objectID": "slides_TCh01.html#crafting-conceptual-definitions-transparency",
+    "href": "slides_TCh01.html#crafting-conceptual-definitions-transparency",
+    "title": "Chapter 1: Concepts and definitions",
+    "section": "Crafting Conceptual Definitions: transparency",
+    "text": "Crafting Conceptual Definitions: transparency\nAre the features measurable and transparent? It may be impossible to reach consensus definitions, but at a minimum we should be able to understand what the other person means when they use a concept.\n\n(example of a less-than-ideal conceptual definition of obscenity)",
+    "crumbs": [
+      "Chapter 1: Concepts and definitions"
+    ]
+  },
+  {
+    "objectID": "slides_TCh01.html#steps",
+    "href": "slides_TCh01.html#steps",
+    "title": "Chapter 1: Concepts and definitions",
+    "section": "Steps",
+    "text": "Steps\n\nIdentify the unit of analysis\nMake a list of important properties, clear examples and non-examples, and/or generally accepted definitions\nEliminate characteristics that aren’t distinctive.\nRemove items that aren’t measureable\nReduce dimensions where possible\nRefine as needed",
+    "crumbs": [
+      "Chapter 1: Concepts and definitions"
+    ]
+  },
+  {
+    "objectID": "slides_TCh01.html#defining-terrorism",
+    "href": "slides_TCh01.html#defining-terrorism",
+    "title": "Chapter 1: Concepts and definitions",
+    "section": "Defining Terrorism",
+    "text": "Defining Terrorism",
+    "crumbs": [
+      "Chapter 1: Concepts and definitions"
+    ]
+  },
+  {
+    "objectID": "slides_TCh01.html#defining-terrorism-1",
+    "href": "slides_TCh01.html#defining-terrorism-1",
+    "title": "Chapter 1: Concepts and definitions",
+    "section": "Defining Terrorism",
+    "text": "Defining Terrorism",
+    "crumbs": [
+      "Chapter 1: Concepts and definitions"
+    ]
+  },
+  {
+    "objectID": "slides_TCh01.html#operationalization",
+    "href": "slides_TCh01.html#operationalization",
+    "title": "Chapter 1: Concepts and definitions",
+    "section": "Operationalization",
+    "text": "Operationalization\nEven where we agree on a definition, we will need to measure a concept and there is often slippage here\nConsider measuring party identification:\n\n\n\n\n\n\n\nInstrument\nProblem\n\n\n\n\nRegistration\nExcludes new/non-voters, people in states without partisan registration, and people who register one way and vote another\n\n\nPolicy views\nComplicated to measure, and a surprising number of people don’t have consistent policy views!\n\n\nVoting Behavior\nExcludes new/non-voters, may not be consistent even in a single election, people may exaggerate or forget voting behavior.\n\n\nSelf Description*\nSubjective, far more self-described “independents” than people who consistently vote that way",
+    "crumbs": [
+      "Chapter 1: Concepts and definitions"
+    ]
+  },
+  {
+    "objectID": "slides_TCh01.html#operationalization-1",
+    "href": "slides_TCh01.html#operationalization-1",
+    "title": "Chapter 1: Concepts and definitions",
+    "section": "Operationalization",
+    "text": "Operationalization",
+    "crumbs": [
+      "Chapter 1: Concepts and definitions"
+    ]
+  },
+  {
+    "objectID": "slides_TCh01.html#random-measurement-error",
+    "href": "slides_TCh01.html#random-measurement-error",
+    "title": "Chapter 1: Concepts and definitions",
+    "section": "Random Measurement Error",
+    "text": "Random Measurement Error",
+    "crumbs": [
+      "Chapter 1: Concepts and definitions"
+    ]
+  },
+  {
+    "objectID": "slides_TCh01.html#systematic-measurement-error",
+    "href": "slides_TCh01.html#systematic-measurement-error",
+    "title": "Chapter 1: Concepts and definitions",
+    "section": "Systematic Measurement Error",
+    "text": "Systematic Measurement Error",
+    "crumbs": [
+      "Chapter 1: Concepts and definitions"
+    ]
+  },
+  {
+    "objectID": "Resources.html",
+    "href": "Resources.html",
+    "title": "Resources",
     "section": "",
-    "text": "This is a site for students taking GVPT 201 in Spring 2025. While the most important course material is stored on ELMS, I will occasionally post examples and other instructional materials and other cool stuff on this site."
+    "text": "Additional resources and tips for GVPT 201 students.",
+    "crumbs": [
+      "Resources"
+    ]
   },
   {
     "objectID": "index.html",
@@ -93,13 +205,101 @@
     ]
   },
   {
-    "objectID": "Resources.html",
-    "href": "Resources.html",
-    "title": "Resources",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "Additional resources and tips for GVPT 201 students.",
+    "text": "This is a site for students taking GVPT 201 in Spring 2025. While the most important course material is stored on ELMS, I will occasionally post examples and other instructional materials and other cool stuff on this site."
+  },
+  {
+    "objectID": "faqs.html",
+    "href": "faqs.html",
+    "title": "FAQs",
+    "section": "",
+    "text": "This is a running list of questions that have come up a lot over the semester. If you’re here, you might also want to check out the page on basic troubleshooting in R.",
     "crumbs": [
-      "Resources"
+      "FAQs"
+    ]
+  },
+  {
+    "objectID": "links.html",
+    "href": "links.html",
+    "title": "Links",
+    "section": "",
+    "text": "Some helpful links for students interested in learning more about political science, research methods, or R programming.\n\nTextbook Resources\n\nPoliSciData.com\n\nThis is the website for the course textbook. In addition to helpful guides and videos, they’ve got an excellent collection of political science data sets that are free and online. If you’re interested in doing your own analyses, this is a great place to start. You might also want to check out their YouTube page.\n\n\n\n\nNews and Analysis\n\nGood Authority\n\nGood Authority is the successor to The Monkey Cage, a blog previously hosted by the Washington Post. Its a great place to read new research and analysis of current events from a polisci perspective.\n\nLSE Blogs\n\nCommentary and analysis of global and European politics hosted by the London School of Economics.\n\nFiveThirtyEight\n\nData-driven analysis and commentary on current events and sports. Now hosted by ABC News.\n\nPew Research\n\nA non-partisan think tank that tracks public opinion in the U.S. and abroad. Their Decoded Blog offers some really nice hands-on tutorials for anyone interested in working with public opinion data.\n\n\n\n\nR\nThere are a ton of great free resources for learning more about R, and this is by no means an exhaustive list, but these are some books and tutorials that I think are especially useful if you’re interested in learning more about using R for analysis.\n\nR for data science\n\nThis is a free e-book written, appropriately, for people who want to use R for data science. The book assumes some basic knowledge of R programming, but its an excellent resource if you want to learn how to do things like build your own database from scratch or scrape the web.\n\nhttps://rforpoliticalscience.com/\n\nA blog with short posts detailing packages, data sources, and other small projects and tips all aimed at R-using political scientists.\n\nBig Book of R\n\nLinks to hundreds of free, open-source R tutorials arranged by topic.",
+    "crumbs": [
+      "Resources",
+      "Links"
+    ]
+  },
+  {
+    "objectID": "slides_TCh00.html#lecture",
+    "href": "slides_TCh00.html#lecture",
+    "title": "Introductions",
+    "section": "Lecture",
+    "text": "Lecture\nThis is what you’re doing right now. Expect something very much like this.\n\nChoices\n\n\nAttend in person (this is the only format where you can ask questions!)\nWatch Zoom (check the Zoom tab on ELMS)\nWatch recordings on Panopto (check the “Lecture Recordings” section on in Panopto tab)",
+    "crumbs": [
+      "Introductions"
+    ]
+  },
+  {
+    "objectID": "slides_TCh00.html#discussion-sections",
+    "href": "slides_TCh00.html#discussion-sections",
+    "title": "Introductions",
+    "section": "Discussion sections",
+    "text": "Discussion sections\n\n\nEvery Friday, led by your TA\nJoin in person or on Zoom.\n\nZoom participants must have cameras on during the class\n\nAttendance is mandatory and participation is 10% of your grade\n\nRecordings will still be on ELMS in the “Section Recordings” folder of the Panopto tab\n\nThis is your best chance to ask homework questions, get feedback, and clarify concepts.",
+    "crumbs": [
+      "Introductions"
+    ]
+  },
+  {
+    "objectID": "slides_TCh00.html#resources",
+    "href": "slides_TCh00.html#resources",
+    "title": "Introductions",
+    "section": "Resources",
+    "text": "Resources\nThere’s additional materials on the syllabus.\nGoing forward I will generally try to organize the most important stuff on the modules tab in ELMS.",
+    "crumbs": [
+      "Introductions"
+    ]
+  },
+  {
+    "objectID": "slides_TCh00.html#political-science-research",
+    "href": "slides_TCh00.html#political-science-research",
+    "title": "Introductions",
+    "section": "Political Science Research",
+    "text": "Political Science Research\n\n\nNormative Research\n“Ought” questions\n\nWhat constitutes a just society?\nWhat are the qualities of a good leader?\nWhat obligations do citizens have towards their governments?\n\n\nEmpirical Research\n“Is/Are” questions\n\nAre democracies less likely to go to war compared to autocracies?\nDo protests prompt political change?\nWhen are political parties most likely to be unified around a shared platform or ideology?\n\n\n\n\nThis course will focus primarily on the empirical and quantitative aspects of research.\n\n\nBut ideally, these goals should inform each other.",
+    "crumbs": [
+      "Introductions"
+    ]
+  },
+  {
+    "objectID": "slides_TCh00.html#empirical-research-goals",
+    "href": "slides_TCh00.html#empirical-research-goals",
+    "title": "Introductions",
+    "section": "Empirical Research: goals",
+    "text": "Empirical Research: goals\n\nIdentify a research question\nDefine key concepts\nFormulate a testable hypothesis\nCollect data, conduct analysis, and assess results\nCollectively: accumulate knowledge about the world",
+    "crumbs": [
+      "Introductions"
+    ]
+  },
+  {
+    "objectID": "slides_TCh00.html#empirical-research-stats",
+    "href": "slides_TCh00.html#empirical-research-stats",
+    "title": "Introductions",
+    "section": "Empirical Research: Stats",
+    "text": "Empirical Research: Stats\n\n\nNumbers are for nerds, but you need some stats and basic programming skills to get through this course, this program, and probably your career and for general life stuff.",
+    "crumbs": [
+      "Introductions"
+    ]
+  },
+  {
+    "objectID": "slides_TCh00.html#conceptual-outline-of-the-course",
+    "href": "slides_TCh00.html#conceptual-outline-of-the-course",
+    "title": "Introductions",
+    "section": "Conceptual Outline of the course",
+    "text": "Conceptual Outline of the course\n\nWeeks 1 through 3: How to measure stuff and why it matters\nWeeks 4 through 8: Description, comparison, and hypotheses\nWeeks 9 through 10: inference and statistical tests\nWeeks 11 through 14: correlation and regression analysis",
+    "crumbs": [
+      "Introductions"
     ]
   }
 ]
