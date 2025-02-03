@@ -43,6 +43,11 @@ hist(responses$age)
 histC(responses$age)
 
 
+## boxplot() ----
+# will return a boxplot for one or more variables
+
+boxplot(responses$mood)
+
 ## table() ----
 # table is a simple command for getting the frequencies of a categorical variable
 
@@ -58,6 +63,11 @@ freqC(responses$body_odor)
 freqC(x=body_odor, data=responses)
 
 
+# When you're finished -----
 
+# Be sure you save scripts when you're finished! In most cases, this is a better
+# way to keep track of results than saving the data itself because its more transparent
+# and easier to re-use and share (you're also required to submit scripts with your
+# homework, so this is just a good idea in general)
 
 
