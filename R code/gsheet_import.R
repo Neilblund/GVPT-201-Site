@@ -12,8 +12,7 @@ url<-'https://docs.google.com/spreadsheets/d/1ThOq7SQjnOQxvdbzUawE5jo5UwOyoSSDxD
 responses<-read_sheet(url, sheet='Responses')
 newnames<-read_sheet(url, sheet='names')
 colnames(responses) <- newnames$colname
-# adding labels
-var_label(responses) <- newnames$label
+
 
 for(i in colnames(responses)){
   index<-which(newnames$colname==i)
@@ -25,7 +24,8 @@ for(i in colnames(responses)){
   
 }
 
-
+# adding labels
+var_label(responses) <- newnames$label
 
 
 saveRDS(responses, file='responses.rds')
