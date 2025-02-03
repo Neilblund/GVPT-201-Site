@@ -1,6 +1,7 @@
 # don't worry about this. Just importing the data and doing some formatting
 source('https://raw.githubusercontent.com/Neilblund/GVPT-201-Site/refs/heads/main/R%20code/gsheet_import.R')
 
+
 responses<-readRDS("responses.rds") # reading in a saved copy of the results
 
 # Stuff below here is more relevant -----
