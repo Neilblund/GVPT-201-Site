@@ -1,8 +1,11 @@
-# don't worry about this. Just importing the data and doing some formatting
+################################################################################
+# don't worry about this section! Just importing the data and doing some formatting!
 source('https://raw.githubusercontent.com/Neilblund/GVPT-201-Site/refs/heads/main/R%20code/gsheet_import.R')
 
-
 responses<-readRDS("responses.rds") # reading in a saved copy of the results
+
+
+################################################################################
 
 # Stuff below here is more relevant -----
 library(RCPA3) # importing the workbook R package
@@ -132,8 +135,18 @@ freqC(x=body_odor, data=responses,
       )
 
 
+# describeC---------------------------------------------------------------------
+# describeC is a RCPA3 function that will generate descriptive statistics. The 
+# stats generated will be different depending on the type of variable you're working
+# with. 
 
+#So interval variables will produce stuff like mean, median, standard deviation etc.
 
+describeC(responses$mood)
+
+# While categorical variables will only report things like the number of missing
+# and unique values and the mode:
+describeC(responses$astrology)
 
 
 # When you're finished -----
@@ -145,7 +158,7 @@ freqC(x=body_odor, data=responses,
 
 
 # Extra Stuff ------
-# none of this is necessary for... anything. 
+
 
 ## Customizing a bar plot ----
 # R's built-in bar plot function allows you to do a little more customization
@@ -177,8 +190,6 @@ barplot(
   main = "Picks for 2024 song of the year",         # add a title
   xlab='percent'                                    # add an x-axis label
 )
-
-
 
 
 ## Using tidyverse packages----
