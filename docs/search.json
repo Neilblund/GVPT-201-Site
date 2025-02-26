@@ -55,134 +55,462 @@
     ]
   },
   {
+    "objectID": "surveys.html",
+    "href": "surveys.html",
+    "title": "Class surveys",
+    "section": "",
+    "text": "Documentation and code for the in-class surveys.",
+    "crumbs": [
+      "Class surveys"
+    ]
+  },
+  {
+    "objectID": "slides_TCh05.html#spurious-relationships",
+    "href": "slides_TCh05.html#spurious-relationships",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "Spurious Relationships",
+    "text": "Spurious Relationships\nWhy might we see a correlation between the amount of weekly protest activity and the number of flights to Hawaii?"
+  },
+  {
+    "objectID": "slides_TCh05.html#spurious-relationships-1",
+    "href": "slides_TCh05.html#spurious-relationships-1",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "Spurious Relationships",
+    "text": "Spurious Relationships\nThe spurious correlation is happening because summer days have more protests and more flights to Hawaii because that’s when the weather is nice.\n\n\nHow do we resolve this?"
+  },
+  {
+    "objectID": "slides_TCh05.html#spurious-relationships-2",
+    "href": "slides_TCh05.html#spurious-relationships-2",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "Spurious Relationships",
+    "text": "Spurious Relationships\n\nA simple fix here would be dis-aggregation: we split the data up based on the season and then we re-assess the same relationship within each group. This would ensure we were comparing summer flights to summer protests and non-summer flights to non-summer protests.\nIf the correlation is spurious, then this will make the observed relationship will disappear or potentially even reverse (go from positive to negative or vice-versa)"
+  },
+  {
+    "objectID": "slides_TCh05.html#spurious-relationships-3",
+    "href": "slides_TCh05.html#spurious-relationships-3",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "Spurious Relationships",
+    "text": "Spurious Relationships\n\nThis process of splitting data up to make comparisons within groups is the basic intuition behind mathematically controlling for a confounder. (you’ll often hear this described as “holding constant” for a confounder)"
+  },
+  {
+    "objectID": "slides_TCh05.html#cra-vote",
+    "href": "slides_TCh05.html#cra-vote",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "1964 CRA vote",
+    "text": "1964 CRA vote"
+  },
+  {
+    "objectID": "slides_TCh05.html#cra-vote-1",
+    "href": "slides_TCh05.html#cra-vote-1",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "1964 CRA vote",
+    "text": "1964 CRA vote"
+  },
+  {
+    "objectID": "slides_TCh05.html#cra-vote-2",
+    "href": "slides_TCh05.html#cra-vote-2",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "1964 CRA vote",
+    "text": "1964 CRA vote\nThe pattern looks different once we consider region:\n\n\n\n\nEffect of party in the north = 95 - 85 = 10\nEffect of party in the south = 9 - 0 = 9\nThe relationship flips direction and shrinks after accounting for region.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNorth\n\n\nSouth\n\n\n\n\n\nCRA vote\nDem\nRep\nDem\nRep\n\n\nyes\n145 (95%)\n136 (85%)\n8 (9%)\n0 (0%)\n\n\nno\n8 (5%)\n24 (15%)\n83 (91%)\n11 (100%)"
+  },
+  {
+    "objectID": "slides_TCh05.html#civil-rights-act",
+    "href": "slides_TCh05.html#civil-rights-act",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "1964 Civil Rights Act",
+    "text": "1964 Civil Rights Act"
+  },
+  {
+    "objectID": "slides_TCh05.html#control-groups-vs.-control-variables",
+    "href": "slides_TCh05.html#control-groups-vs.-control-variables",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "Control groups vs. Control variables",
+    "text": "Control groups vs. Control variables\n\nThe language here tends to throw people off:\n\nControl groups are the baseline group in an experiment. The control group in a medical study would be the people who received the placebo treatment.\nControl variables are the confounding variables that we want to address by holding constant for their effects on the outcome.\n\n\n\nRandomization and control variables attempt to accomplish the same goals, but in different ways."
+  },
+  {
+    "objectID": "slides_TCh05.html#additive-relationships",
+    "href": "slides_TCh05.html#additive-relationships",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "Additive Relationships",
+    "text": "Additive Relationships\nIn an additive relationship, Z independently influences the outcome, but it doesn’t account for the relationship between X and Y\n\n\nExamples:\n\nBeing Republican and conservative both make people more likely to vote for Republican candidates.\nGDP and literacy rates both make countries more likely to be Democratic.\nGenetics and environment both impact life expectancy separately.\n\n\n\n\n\n\n\n\n\nmrdag\n\n\n\nZ\n\nZ (control)\n\n\n\nY\n\nY (DV)\n\n\n\nZ-&gt;Y\n\n\n\n\n\nX\n\nX (IV) \n\n\n\nX-&gt;Y"
+  },
+  {
+    "objectID": "slides_TCh05.html#interactive-relationship",
+    "href": "slides_TCh05.html#interactive-relationship",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "Interactive Relationship",
+    "text": "Interactive Relationship\nIn an interactive relationship, Z strengthens or weakens the effect of X on Y.\n\n\n\nWeight changes the effect of alcoholic drinks on blood alcohol level. (smaller people get drunk with fewer drinks, all else equal)\nIssue salience makes policy views more important. (i.e. if a candidate talks a lot about abortion, abortion opinions will matter more for vote choice)\nState referenda make state policy more likely to align with public opinion.\n\n\n\n\n\n\n\n\n\nmrdag\n\n\n\nZ\n\nZ (control)\n\n\n\nX\n\nX (IV) \n\n\n\nZ-&gt;X\n\n\n\n\n\nY\n\nY (DV)\n\n\n\nX-&gt;Y"
+  },
+  {
+    "objectID": "slides_TCh05.html#review",
+    "href": "slides_TCh05.html#review",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "Review",
+    "text": "Review"
+  },
+  {
+    "objectID": "slides_TCh05.html#steps-for-identifying-a-relationship",
+    "href": "slides_TCh05.html#steps-for-identifying-a-relationship",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "Steps for identifying a relationship",
+    "text": "Steps for identifying a relationship"
+  },
+  {
+    "objectID": "slides_TCh05.html#when-to-use-what",
+    "href": "slides_TCh05.html#when-to-use-what",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "When to use what",
+    "text": "When to use what\n\n\nUse a cross tab when all variables are categorical\nUse a mean comparison when the DV is interval and the control and IV are categorical\n\nKeep in mind that, if the DV is dichotomous, you can basically treat it as numeric and the “mean” is equal to the proportion of “Yes” or “TRUE” values for each group.\n\nConsider collapsing some categories to simplify analyses and ensure you have sufficient data. For instance, if a response ranges from Strongly Agree to Strongly Disagree, you might collapse it down to just 2-3 categories."
+  },
+  {
+    "objectID": "slides_TCh05.html#what-about-interval-level-data",
+    "href": "slides_TCh05.html#what-about-interval-level-data",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "What about interval level data?",
+    "text": "What about interval level data?"
+  },
+  {
+    "objectID": "slides_TCh05.html#other-methods-for-addressing-confounding",
+    "href": "slides_TCh05.html#other-methods-for-addressing-confounding",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "Other methods for addressing confounding",
+    "text": "Other methods for addressing confounding"
+  },
+  {
+    "objectID": "slides_TCh05.html#matching",
+    "href": "slides_TCh05.html#matching",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "Matching",
+    "text": "Matching"
+  },
+  {
+    "objectID": "slides_TCh05.html#difference-in-differences",
+    "href": "slides_TCh05.html#difference-in-differences",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "Difference-in-differences",
+    "text": "Difference-in-differences"
+  },
+  {
+    "objectID": "slides_TCh05.html#survey-data",
+    "href": "slides_TCh05.html#survey-data",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "Survey Data",
+    "text": "Survey Data\n\nlibrary(RCPA3) # load the RCPA3 package\n# this string is just a link to a web page that holds the data: \nloc &lt;- url('https://github.com/Neilblund/GVPT-201-Site/raw/refs/heads/main/Rdata/pilot_fmted.rds')\n\n# read RDS reads the data from the URL into R:\npilot&lt;-readRDS(loc)\n\n# create factor variable for being over 18\npilot$over18 &lt;-factor(pilot$Q6&gt;18, levels=c(FALSE, TRUE), labels=c('18 or under', '&gt;18'))\n\n# create a factor variable for being an apple user\npilot$appleuser&lt;-factor(pilot$apple, levels=c(FALSE, TRUE), labels=c(\"Not an Apple user\", \"Apple user\"))\n\n# get the effect of being an apple user on voter turnout in 2024\ncrosstabC(dv = Q14, iv=appleuser  ,data=pilot, plot.response='Yes')\n\n# get the effect of being an apple user on voter turnout in 2024 controlling for age&gt;18\ncrosstabC(dv = Q14, iv=appleuser, z=over18,data=pilot, plot.response=\"Yes\")\n\n\n# get the average support for allowing a president to run for a third term by apple user and &gt;18\n\ncompmeansC(dv = Q34_2, iv = appleuser, z= over18, data=pilot)"
+  },
+  {
+    "objectID": "slides_TCh03.html#why-questions",
+    "href": "slides_TCh03.html#why-questions",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "“Why” questions",
+    "text": "“Why” questions\n\n“Why questions”\n\nWhy do some eligible voters fail to turn out on election day?\nWhat explains variation in gun policies across U.S. states?\nWhy did communist revolutions happen in China and Russia but not Europe or the United States?"
+  },
+  {
+    "objectID": "slides_TCh03.html#theoretical-scope",
+    "href": "slides_TCh03.html#theoretical-scope",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Theoretical Scope",
+    "text": "Theoretical Scope\nTheories vary in their scope:\n\n\nEarly sociologists like Marx, Durkheim, Weber attempted to develop all-encompassing “laws” of political/social/historical change. These are sometimes called “grand theories”\nContemporary social sciences are less ambitious, and so its more common to propose “middle-range” theories that seek to explain a smaller number regularities in one area.\n\nHowever, they may draw on “grand theories” either implicitly or explicitly."
+  },
+  {
+    "objectID": "slides_TCh03.html#paths-to-modernity",
+    "href": "slides_TCh03.html#paths-to-modernity",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Paths to Modernity",
+    "text": "Paths to Modernity\nWhat explains differences in the “path to modernity” across different countries during the 20th century?\n\nFree markets/Democracy in the U.S. and England\nFascism in Germany and Japan\nCommunism in Russia and China"
+  },
+  {
+    "objectID": "slides_TCh03.html#paths-to-modernity-1",
+    "href": "slides_TCh03.html#paths-to-modernity-1",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Paths to Modernity",
+    "text": "Paths to Modernity\n\n\nBarrington Moore: Classes have unique and conflicting interests. Conflicts over these interests come to the forefront during industrialization. The outcomes of these class conflicts shape the political and economic system.\n\n\nFascist states emerge when the landed aristocracy wins\nCommunist states emerge when the peasant class wins\nDemocracies emerge when the bourgeois (middle class) wins."
+  },
+  {
+    "objectID": "slides_TCh03.html#paths-to-modernity-2",
+    "href": "slides_TCh03.html#paths-to-modernity-2",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Paths to Modernity",
+    "text": "Paths to Modernity\n\n\nMoore’s theory borrows assumptions from a (sociological) Marxist grand theory about class conflict\nHe “tests” it by showing how it fits the selected cases.\nIt can be used and refined to generate a set of empirical expectations about what factors should matter for democratization. For instance, we might expect:\n\nStates with larger agricultural sectors during industrialization to be less democratic today (compared to states with smaller agricultural sectors)\nStates with higher literacy rates during industrialization to be more democratic (compared to states with lower literacy rates)"
+  },
+  {
+    "objectID": "slides_TCh03.html#theories-survey-answers",
+    "href": "slides_TCh03.html#theories-survey-answers",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Theories: survey answers",
+    "text": "Theories: survey answers\nWhat explains inconsistent answers to survey questions?\n\n\n\n\nAsking the same people the same questions a few months apart yields surprisingly unpredictable results.\nSmall changes in question wording, ordering of choices, or survey context cause big changes in outcomes\n\n\n\n\n\n\n\n\n\n\n\n\nData from the 1980 ANES panel survey (reproduced from Zaller 1992)"
+  },
+  {
+    "objectID": "slides_TCh03.html#theories-voting",
+    "href": "slides_TCh03.html#theories-voting",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Theories: voting",
+    "text": "Theories: voting\nWhy do people vote?\n\n\nSince politicians generally offer public goods, you can enjoy the benefits of your preferred candidate winning even if you don’t vote\nSince voting has costs (even though they’re small) free riding can be preferable to actually turning out if the costs outweigh the benefits."
+  },
+  {
+    "objectID": "slides_TCh03.html#assessing-theories",
+    "href": "slides_TCh03.html#assessing-theories",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Assessing Theories",
+    "text": "Assessing Theories\n\n\n\nTheories require simplified representations of a complex reality\nUtility, not “truth”: theoretical models invariably contain assumptions and they’re probably violated in practice.\n\n\n\n\n\nGeorge Box: “All models are wrong, but some are useful”"
+  },
+  {
+    "objectID": "slides_TCh03.html#hypotheses-1",
+    "href": "slides_TCh03.html#hypotheses-1",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Hypotheses",
+    "text": "Hypotheses\nComponents:\n\nUnit of analysis\nDependent variable\nIndependent variable\nDirection of the predicted relationship\n\n\nGood hypotheses inevitably involve comparative language (higher/lower/more/less/increase/decrease/better/worse)"
+  },
+  {
+    "objectID": "slides_TCh03.html#hypothesis-template",
+    "href": "slides_TCh03.html#hypothesis-template",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Hypothesis Template",
+    "text": "Hypothesis Template\nIn a comparison of [unit of analysis], those having [one value on the independent variable] will be [more/less] likely to have [one value on the dependent variable] than those having a [different value on the independent variable]."
+  },
+  {
+    "objectID": "slides_TCh03.html#hypothesis-template-1",
+    "href": "slides_TCh03.html#hypothesis-template-1",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Hypothesis Template",
+    "text": "Hypothesis Template\nIn a comparison of [voters], those having [stronger political views] will be more likely to have [a higher likelihood of turnout] than those having a [weaker views].\n\n\nUnit of analysis: voters\nIV: strength of political views\nDV: turnout\nRelationship: strength increases turnout"
+  },
+  {
+    "objectID": "slides_TCh03.html#hypothesis-template-2",
+    "href": "slides_TCh03.html#hypothesis-template-2",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Hypothesis Template",
+    "text": "Hypothesis Template\nIn a comparison of [states], those having [a larger middle class during industrialization] will be more likely to have [democracy] than those having a [a smaller middle class].\n\n\nUnit of analysis: states\nIV: size of the middle class\nDV: democracy\nRelationship: middle class increases likelihood of democracy"
+  },
+  {
+    "objectID": "slides_TCh03.html#hypothesis-template-3",
+    "href": "slides_TCh03.html#hypothesis-template-3",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Hypothesis Template",
+    "text": "Hypothesis Template\nIn a comparison of [survey respondents], those having [higher levels of attention to politics] will be more likely to have [consistent responses] than those having a [lower levels of attention to politics].\n\n\nUnit of analysis: Survey respondents\nIV: level of attention\nDV: response consistency\nRelationship: attention increases consistency"
+  },
+  {
+    "objectID": "slides_TCh03.html#complex-relationships",
+    "href": "slides_TCh03.html#complex-relationships",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Complex Relationships",
+    "text": "Complex Relationships\nGood hypotheses may suggest a more complex set of relationships than just “positive/negative”. They could propose conditional/interactive/curvilinear relationships as well.\n\nThe “oil curse”\n\nIn a comparison of [countries], those having [higher levels of GDP] will be [more likely to be democratic] compared to [countries with lower GDP], [however, this relationship will not hold for countries that get rich from oil exports.]\n\n\n\nRetrospective voting:\n\nIn a comparison of [voters], those having [lower levels of attention to politics] will be [more likely to vote for the incumbent when the economy is doing well]. Those having [higher levels of attention to politics] will be [more likely to vote based on policy preferences regardless of the state of the economy]"
+  },
+  {
+    "objectID": "slides_TCh03.html#bad-hypotheses",
+    "href": "slides_TCh03.html#bad-hypotheses",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Bad hypotheses",
+    "text": "Bad hypotheses\n\n\nThe main determinant of war is the distribution of power in the international system.\nIn comparing individuals, annual income and the level of education are related.\nDemocracies are peaceful. In comparing individuals, some people are more likely to favor the death penalty than others."
+  },
+  {
+    "objectID": "slides_TCh03.html#cross-tabulation-step-1",
+    "href": "slides_TCh03.html#cross-tabulation-step-1",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Cross tabulation: Step 1",
+    "text": "Cross tabulation: Step 1\nStart by calculating the number of observations with each value of each category:\n\n\n\n\n\n\n\n\niv\ndv\n\n\n\n\nHIGH\nNo\n\n\nHIGH\nNo\n\n\nLOW\nNo\n\n\nHIGH\nYes\n\n\nHIGH\nYes\n\n\nHIGH\nYes\n\n\nHIGH\nYes\n\n\nLOW\nYes\n\n\nLOW\nYes\n\n\nLOW\nYes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\niv\n\n\n\ndv\nLOW\nHIGH\n\n\n\n\nNo\n1\n2\n\n\nYes\n3\n4\n\n\n\n\n\nTotal\n4\n6"
+  },
+  {
+    "objectID": "slides_TCh03.html#cross-tabulation-step-2",
+    "href": "slides_TCh03.html#cross-tabulation-step-2",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Cross tabulation: Step 2",
+    "text": "Cross tabulation: Step 2\nThen, calculate the proportion/percentage of observations among each value of the IV.\nIf the independent variable is in the columns, then the columns should sum to 100%.\nIf the independent variable is in the rows, then the rows should sum to 100%.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\niv\n\n\n\ndv\nLOW\nHIGH\n\n\n\n\nNo\n1\n2\n\n\nYes\n3\n4\n\n\n\n\n\nTotal\n4\n6\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\niv\n\n\n\ndv\nLOW\nHIGH\n\n\n\n\nNo\n1 (25%)\n2 (33%)\n\n\nYes\n3 (75%)\n4 (67%)\n\n\n\n\n\nTotal\n4\n6"
+  },
+  {
+    "objectID": "slides_TCh03.html#cross-tabulation-interpretation",
+    "href": "slides_TCh03.html#cross-tabulation-interpretation",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Cross tabulation: interpretation",
+    "text": "Cross tabulation: interpretation\nLook at what happens to the DV at different values of the IV. If your variables are ordinal, you should be able to identify a direction of the effect.\nThe proportion of “Yes” values decreases as the IV goes from lower to higher, so this is a negative or inverse relationship.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\niv\n\n\n\ndv\nLOW\nHIGH\n\n\n\n\nNo\n1 (25%)\n2 (33%)\n\n\nYes\n3 (75%)\n4 (67%)\n\n\n\n\n\nTotal\n4\n6\n\n\n\n\n\n\n\n\n\nUsing a bar graph or line graph can make these relationships easier to spot:"
+  },
+  {
+    "objectID": "slides_TCh03.html#cross-tabulation-notes",
+    "href": "slides_TCh03.html#cross-tabulation-notes",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Cross tabulation: notes",
+    "text": "Cross tabulation: notes\n\nKey rule: always calculate percentages or proportions by categories of the independent variable.\n\nThis allows you to compare groups that are different sizes.\n\nIf one or both variables are interval-level, you can bin them in order to use them in a cross tab. For instance, you could separate an interval like into a series of age ranges."
+  },
+  {
+    "objectID": "slides_TCh03.html#cross-tabulation-example",
+    "href": "slides_TCh03.html#cross-tabulation-example",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Cross tabulation: example",
+    "text": "Cross tabulation: example\nHypothesis: in a comparison of individuals, independents are less likely to turn out to vote compared to people who support one party or another.\n\nHow should I calculate proportions here?\n\n\n\n\nVoter Turnout in 2020 by party ID\n\n\n\n\n\n\n\n\n\n\nParty ID\n\n\n\nturnout2020\nDemocrat\nIndependent\nRepublican\n\n\n\n\n0. Did not vote\n335\n316\n382\n\n\n1. Voted\n3160\n560\n2714"
+  },
+  {
+    "objectID": "slides_TCh03.html#cross-tabulation-example-1",
+    "href": "slides_TCh03.html#cross-tabulation-example-1",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Cross tabulation: example",
+    "text": "Cross tabulation: example\nAre these results generally consistent with my hypothesis?\n\n\n\n\n\n\nVoter Turnout in 2020 by party ID\n\n\n\n\n\n\n\n\n\n\nParty ID\n\n\n\nturnout2020\nDemocrat\nIndependent\nRepublican\n\n\n\n\n0. Did not vote\n335 (10%)\n316 (36%)\n382 (12%)\n\n\n1. Voted\n3160 (90%)\n560 (64%)\n2714 (88%)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIf we think of party ID as an ordered variable, this is a curvilinear relationship."
+  },
+  {
+    "objectID": "slides_TCh03.html#rowcolumn-percentages",
+    "href": "slides_TCh03.html#rowcolumn-percentages",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Row/Column percentages",
+    "text": "Row/Column percentages\nWhat happens if I calculate % among the values of the DV?\nHere’s the relationship between education and voter turnout with % calculated on education level:\n\n\n\n\nVoter Turnout in 2020 by highest level of education completed\n\n\n\n\n\n\n\n\n\n\n\n\nEducation\n\n\n\nturnout2020\n1. Less than high school credential\n2. High school credential\n3. Some post-high school, no bachelor's degree\n4. Bachelor's degree\n5. Graduate degree\n\n\n\n\n0. Did not vote\n130 (41%)\n286 (24%)\n380 (15%)\n135 (7%)\n91 (6%)\n\n\n1. Voted\n185 (59%)\n883 (76%)\n2148 (85%)\n1749 (93%)\n1388 (94%)\n\n\n\nNote: \n\n\n\n\n\n\n\n Column % in parentheses\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe results suggest a positive or direct relationship: as education increases, so does the % turnout."
+  },
+  {
+    "objectID": "slides_TCh03.html#rowcolumn-percentages-1",
+    "href": "slides_TCh03.html#rowcolumn-percentages-1",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Row/Column percentages",
+    "text": "Row/Column percentages\nWhat happens if I calculate % among the values of the DV?\nHere’s the relationship between education and voter turnout with % calculated across voter turnout\n\n\n\n\nVoter Turnout in 2020 by highest level of education completed\n\n\n\n\n\n\n\n\n\n\n\n\nEducation\n\n\n\nturnout2020\n1. Less than high school credential\n2. High school credential\n3. Some post-high school, no bachelor's degree\n4. Bachelor's degree\n5. Graduate degree\n\n\n\n\n0. Did not vote\n130 (13%)\n286 (28%)\n380 (37%)\n135 (13%)\n91 (9%)\n\n\n1. Voted\n185 (3%)\n883 (14%)\n2148 (34%)\n1749 (28%)\n1388 (22%)\n\n\n\nNote: \n\n\n\n\n\n\n\n Row % in parentheses\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHere, the results can give the misleading impression that there’s a curvilinear relationship: turnout drops off for Bachelor’s Degrees and above."
+  },
+  {
+    "objectID": "slides_TCh03.html#rowcolumn-percentages-2",
+    "href": "slides_TCh03.html#rowcolumn-percentages-2",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Row/Column percentages",
+    "text": "Row/Column percentages\nEither of these tables might be a valid way to look at these data, but they answer slightly different questions:\n\n\nIf I want to compare turnout at different levels of education, then I need to calculate % turnout among people with different levels of education.\nIf I want to compare education among voters and non-voters, then I need to calculate % education among people who voted and didn’t vote.\nWhich variable is the IV or DV is sometimes a theoretical question, but in this case its unlikely that voting is causing people to become more educated, so it probably doesn’t make sense to calculate percentages by voting vs. non-voting."
+  },
+  {
+    "objectID": "slides_TCh03.html#mean-comparison-1",
+    "href": "slides_TCh03.html#mean-comparison-1",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Mean Comparison",
+    "text": "Mean Comparison\nGDP data has been grouped into five categories, so now I just need to calculate the average of CO2 emissions within each group of the ordinal IV:\n\n\n\n\nGDP Per capita range\nCO2 emissions per capita\n\n\n\n\n1. $3k or less\n0.3128312\n\n\n2. $3k to $10k\n1.2680574\n\n\n3. $10k to $25k\n4.4065669\n\n\n4. $25k to $45k\n8.0307610\n\n\n5. $45k or more\n12.3134306\n\n\n\n\n\n\n\nIs this generally consistent with expectations?"
+  },
+  {
+    "objectID": "slides_TCh03.html#mean-comparison-2",
+    "href": "slides_TCh03.html#mean-comparison-2",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Mean Comparison",
+    "text": "Mean Comparison\nHere again, the relationship can be easier to conceptualize if we plot it."
+  },
+  {
+    "objectID": "slides_TCh03.html#comparing-boxplots",
+    "href": "slides_TCh03.html#comparing-boxplots",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Comparing Boxplots",
+    "text": "Comparing Boxplots"
+  },
+  {
+    "objectID": "slides_TCh03.html#curvilinear-relationships",
+    "href": "slides_TCh03.html#curvilinear-relationships",
+    "title": "Chapter 3: Theories, hypotheses, and comparisons",
+    "section": "Curvilinear Relationships",
+    "text": "Curvilinear Relationships\nA relationship like this will rarely be perfectly straight, so “linearity” and “curvilinearity” are partly a matter of degree, but there are some cases where there is a clear “U” shape to the relationship:\n\n\n\n\n\n\niv\ndv\n\n\n\n\n1. Extremely liberal\n6.314\n\n\n2. Liberal\n5.685\n\n\n3. Slightly liberal\n5.001\n\n\n4. Moderate; middle of the road\n4.651\n\n\n5. Slightly conservative\n4.636\n\n\n6. Conservative\n4.974\n\n\n7. Extremely conservative\n5.363"
+  },
+  {
     "objectID": "slides_TCh01.html#research-questions",
     "href": "slides_TCh01.html#research-questions",
     "title": "Chapter 1: Concepts and definitions",
     "section": "Research Questions",
-    "text": "Research Questions\n\nDoes religion play a role in civil wars?\nWhat causes increasing income inequality in least developed countries?\nWhy has public opinion on same sex marriage liberalized so rapidly?\nIs the U.S. becoming more polarized?\n\n\nNot everyone is going to agree on what these terms mean!\n\n\nBefore we can get anywhere researching these questions, we need to define the thing we’re studying",
-    "crumbs": [
-      "Chapter 1: Concepts and definitions"
-    ]
+    "text": "Research Questions\n\nDoes religion play a role in civil wars?\nWhat causes increasing income inequality in least developed countries?\nWhy has public opinion on same sex marriage liberalized so rapidly?\nIs the U.S. becoming more polarized?\n\n\nNot everyone is going to agree on what these terms mean!\n\n\nBefore we can get anywhere researching these questions, we need to define the thing we’re studying"
   },
   {
     "objectID": "slides_TCh01.html#defining-things-harder-than-it-seems",
     "href": "slides_TCh01.html#defining-things-harder-than-it-seems",
     "title": "Chapter 1: Concepts and definitions",
     "section": "Defining things: harder than it seems!",
-    "text": "Defining things: harder than it seems!\n\n\n\nReasonable definition of a chair\n\n\n\n\n\n\nChair",
-    "crumbs": [
-      "Chapter 1: Concepts and definitions"
-    ]
+    "text": "Defining things: harder than it seems!\n\n\n\nReasonable definition of a chair\n\n\n\n\n\n\nChair"
   },
   {
     "objectID": "slides_TCh01.html#terms",
     "href": "slides_TCh01.html#terms",
     "title": "Chapter 1: Concepts and definitions",
     "section": "Terms",
-    "text": "Terms\n\nConceptual Definition\n\nA description of the concrete, measurable properties of a concept and the unit of analysis to which it applies\n\nUnit of Analysis\n\nThe entity that that is being studied. For instance: individuals, governments, parties etc.\n\nOperational Definition\n\nA description of the instrument used to measure the concept",
-    "crumbs": [
-      "Chapter 1: Concepts and definitions"
-    ]
+    "text": "Terms\n\nConceptual Definition\n\nA description of the concrete, measurable properties of a concept and the unit of analysis to which it applies\n\nUnit of Analysis\n\nThe entity that that is being studied. For instance: individuals, governments, parties etc.\n\nOperational Definition\n\nA description of the instrument used to measure the concept"
   },
   {
     "objectID": "slides_TCh01.html#crafting-conceptual-definitions-unit-of-analysis",
     "href": "slides_TCh01.html#crafting-conceptual-definitions-unit-of-analysis",
     "title": "Chapter 1: Concepts and definitions",
     "section": "Crafting Conceptual Definitions: Unit of Analysis",
-    "text": "Crafting Conceptual Definitions: Unit of Analysis\n\nWhat is the unit? What entity possesses the characteristic?\n\nThe U.S. and Canada are democracies (concept: democracy, unit: countries)\nLincoln, LBJ, and Trump are the three tallest U.S. presidents (concept: height, unit: presidents/people)\nLabour is the UK’s main center-left political party (concept: party ideology/family, unit: political party)",
-    "crumbs": [
-      "Chapter 1: Concepts and definitions"
-    ]
+    "text": "Crafting Conceptual Definitions: Unit of Analysis\n\nWhat is the unit? What entity possesses the characteristic?\n\nThe U.S. and Canada are democracies (concept: democracy, unit: countries)\nLincoln, LBJ, and Trump are the three tallest U.S. presidents (concept: height, unit: presidents/people)\nLabour is the UK’s main center-left political party (concept: party ideology/family, unit: political party)\n\n\n\nOne way to think of this: if you put your data into a spreadsheet, what does each “row” represent? The answer to that question is the unit of analysis."
   },
   {
     "objectID": "slides_TCh01.html#crafting-conceptual-definitions-key-features",
     "href": "slides_TCh01.html#crafting-conceptual-definitions-key-features",
     "title": "Chapter 1: Concepts and definitions",
     "section": "Crafting Conceptual Definitions: Key features",
-    "text": "Crafting Conceptual Definitions: Key features\n\nWhat are the essential features?\n\nIf there are cases or definitions everyone agrees on, what features do they share?\nAre certain characteristics necessary or sufficient to qualify?\nWhat characteristics are most distinctive to those cases?\nWhat might change to move cases from one category to another? What is most helpful for clarifying edge-cases?\nAre there multiple dimensions or just one? If two characteristics always occur together, you might only need to account for one of them!",
-    "crumbs": [
-      "Chapter 1: Concepts and definitions"
-    ]
+    "text": "Crafting Conceptual Definitions: Key features\n\nWhat are the essential features of the concept?\n\nIf there are cases or definitions everyone agrees on, what characteristics do they share?\nAre certain qualities necessary or sufficient for a case to belong to a category?\nWhat characteristics are most distinctive to those cases?\nWhat is most helpful for clarifying edge-cases?\n\nAre there multiple dimensions or just one? If two characteristics always occur together, you might only need to account for one of them!"
   },
   {
     "objectID": "slides_TCh01.html#crafting-conceptual-definitions-transparency",
     "href": "slides_TCh01.html#crafting-conceptual-definitions-transparency",
     "title": "Chapter 1: Concepts and definitions",
     "section": "Crafting Conceptual Definitions: transparency",
-    "text": "Crafting Conceptual Definitions: transparency\nAre the features measurable and transparent? It may be impossible to reach consensus definitions, but at a minimum we should be able to understand what the other person means when they use a concept.\n\n(example of a less-than-ideal conceptual definition of obscenity)",
-    "crumbs": [
-      "Chapter 1: Concepts and definitions"
-    ]
+    "text": "Crafting Conceptual Definitions: transparency\nWe want to avoid being Potter Stewart:\n\nThe goal is cumulative knowledge, and a private definition can’t provide that."
   },
   {
-    "objectID": "slides_TCh01.html#steps",
-    "href": "slides_TCh01.html#steps",
+    "objectID": "slides_TCh01.html#some-steps-to-take",
+    "href": "slides_TCh01.html#some-steps-to-take",
     "title": "Chapter 1: Concepts and definitions",
-    "section": "Steps",
-    "text": "Steps\n\nIdentify the unit of analysis\nMake a list of important properties, clear examples and non-examples, and/or generally accepted definitions\nEliminate characteristics that aren’t distinctive.\nRemove items that aren’t measureable\nReduce dimensions where possible\nRefine as needed",
-    "crumbs": [
-      "Chapter 1: Concepts and definitions"
-    ]
+    "section": "Some steps to take:",
+    "text": "Some steps to take:\n\n\nIdentify the unit of analysis\nMake a list of important properties, clear examples and non-examples, and/or generally accepted definitions\nRemove items that aren’t measurable\nReduce dimensions where possible (if a characteristic is shared by positive cases and negative cases, then it isn’t useful)\nRefine as needed"
   },
   {
-    "objectID": "slides_TCh01.html#defining-terrorism",
-    "href": "slides_TCh01.html#defining-terrorism",
+    "objectID": "slides_TCh01.html#conceptualizing-democracy",
+    "href": "slides_TCh01.html#conceptualizing-democracy",
     "title": "Chapter 1: Concepts and definitions",
-    "section": "Defining Terrorism",
-    "text": "Defining Terrorism",
-    "crumbs": [
-      "Chapter 1: Concepts and definitions"
-    ]
+    "section": "Conceptualizing Democracy",
+    "text": "Conceptualizing Democracy\nSome proposed features:\n\n\nRegular elections with meaningful alternatives\nPeaceful transfer of power\nFree expression\nA competitive media environment\nAutonomous political groups (political associations, unions, interest groups etc.) that can pressure the government\nRule of law\nChecks and balances\nProperty rights\n\n\n\nMinimalists might argue that 1 and 2 alone are necessary and sufficient. Others may argue that even these 8 are oversimplifying."
   },
   {
-    "objectID": "slides_TCh01.html#defining-terrorism-1",
-    "href": "slides_TCh01.html#defining-terrorism-1",
+    "objectID": "slides_TCh01.html#conceptualizing-democracy-1",
+    "href": "slides_TCh01.html#conceptualizing-democracy-1",
     "title": "Chapter 1: Concepts and definitions",
-    "section": "Defining Terrorism",
-    "text": "Defining Terrorism",
-    "crumbs": [
-      "Chapter 1: Concepts and definitions"
-    ]
+    "section": "Conceptualizing Democracy",
+    "text": "Conceptualizing Democracy\n\nUnit of analysis: governments (usually national governments)\nCases:\n\nDefinitely democracies: U.S., U.K., Uruguay, Taiwan, Japan, Botswana\nDefinitely autocracies: North Korea, Saudi Arabia, Russia, Venezuala\nEdge cases: Hungary, Turkey, Tunisia\n\nFeatures:\n\nVoting and elections\nMultiple parties\nMeaningful civil liberties\nStability and monopoly on violence\n\n\nThis may need refinement: what about sham elections?\nThis may not be distinctive: there are stable autocracies on the list\nMinimalists might argue that we only need the elections and parties"
   },
   {
     "objectID": "slides_TCh01.html#operationalization",
     "href": "slides_TCh01.html#operationalization",
     "title": "Chapter 1: Concepts and definitions",
     "section": "Operationalization",
-    "text": "Operationalization\nEven where we agree on a definition, we will need to measure a concept and there is often slippage here\nConsider measuring party identification:\n\n\n\n\n\n\n\nInstrument\nProblem\n\n\n\n\nRegistration\nExcludes new/non-voters, people in states without partisan registration, and people who register one way and vote another\n\n\nPolicy views\nComplicated to measure, and a surprising number of people don’t have consistent policy views!\n\n\nVoting Behavior\nExcludes new/non-voters, may not be consistent even in a single election, people may exaggerate or forget voting behavior.\n\n\nSelf Description*\nSubjective, far more self-described “independents” than people who consistently vote that way",
-    "crumbs": [
-      "Chapter 1: Concepts and definitions"
-    ]
+    "text": "Operationalization\nEven where we agree on a definition, we will need to measure a concept and there is often slippage here"
   },
   {
-    "objectID": "slides_TCh01.html#operationalization-1",
-    "href": "slides_TCh01.html#operationalization-1",
+    "objectID": "slides_TCh01.html#considerations-reliability",
+    "href": "slides_TCh01.html#considerations-reliability",
     "title": "Chapter 1: Concepts and definitions",
-    "section": "Operationalization",
-    "text": "Operationalization",
-    "crumbs": [
-      "Chapter 1: Concepts and definitions"
-    ]
+    "section": "Considerations: Reliability",
+    "text": "Considerations: Reliability\nReliability refers to how consistently the same measurement instrument produces the same result\n\nTest-Retest method: asking the same questions to a new random sample should produce roughly the same result\nSplit half: for a measurement using a multi-item scale, we can split results and use half the questions to predict the remaining half.\n\n\n(One purported advantage of the minimalist definition of democracy is that its relatively stable because it allows less room for subjectivity.)"
   },
   {
-    "objectID": "slides_TCh01.html#random-measurement-error",
-    "href": "slides_TCh01.html#random-measurement-error",
+    "objectID": "slides_TCh01.html#considerations-validity",
+    "href": "slides_TCh01.html#considerations-validity",
     "title": "Chapter 1: Concepts and definitions",
-    "section": "Random Measurement Error",
-    "text": "Random Measurement Error",
-    "crumbs": [
-      "Chapter 1: Concepts and definitions"
-    ]
+    "section": "Considerations: Validity",
+    "text": "Considerations: Validity\n\nValidity refers to whether an operational definition matches the concept we’re interested in.\nA challenge to validity might come from cases seem miscategorized in our definition. For example: the minimalist definition of democracy suggests that Japan was authoritarian for much of the latter half of the 20th century."
   },
   {
-    "objectID": "slides_TCh01.html#systematic-measurement-error",
-    "href": "slides_TCh01.html#systematic-measurement-error",
+    "objectID": "slides_TCh01.html#measurement-error-1",
+    "href": "slides_TCh01.html#measurement-error-1",
     "title": "Chapter 1: Concepts and definitions",
-    "section": "Systematic Measurement Error",
-    "text": "Systematic Measurement Error",
-    "crumbs": [
-      "Chapter 1: Concepts and definitions"
-    ]
+    "section": "Measurement Error",
+    "text": "Measurement Error\n\nMeasurement error is a source of noise, systematic measurement error is a source of bias\nWe’ll generally find that random noise is much easier to deal with than bias because we can simply collect more data. Bias, on the other hand, presents profound challenges to research because we can only correct it if we can measure it"
+  },
+  {
+    "objectID": "slides_TCh01.html#party-id",
+    "href": "slides_TCh01.html#party-id",
+    "title": "Chapter 1: Concepts and definitions",
+    "section": "Party ID",
+    "text": "Party ID"
+  },
+  {
+    "objectID": "slides_TCh01.html#party-id-1",
+    "href": "slides_TCh01.html#party-id-1",
+    "title": "Chapter 1: Concepts and definitions",
+    "section": "Party ID",
+    "text": "Party ID"
+  },
+  {
+    "objectID": "slides_TCh01.html#party-id-2",
+    "href": "slides_TCh01.html#party-id-2",
+    "title": "Chapter 1: Concepts and definitions",
+    "section": "Party ID",
+    "text": "Party ID"
+  },
+  {
+    "objectID": "slides_TCh01.html#party-id-3",
+    "href": "slides_TCh01.html#party-id-3",
+    "title": "Chapter 1: Concepts and definitions",
+    "section": "Party ID",
+    "text": "Party ID\n\nThe ANES method for measuring party ID is hardly the only option we have, but it has some nice features:\n\nIts relatively reliable and survey respondents understand it\nIts close to the conceptual definition of party ID as a sort of self-affiliation\nIts transparent and widely used\nIt limits the influence of social desirability bias by giving respondents lots of options\nIts linked to observed behavior: vote choice"
   },
   {
     "objectID": "Resources.html",
@@ -195,13 +523,106 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome",
+    "objectID": "pilot_analysis.html",
+    "href": "pilot_analysis.html",
+    "title": "Pilot import and analyses",
     "section": "",
-    "text": "This is a site for students taking GVPT 201 in Spring 2025. While the most important course material is stored on ELMS, I’m experimenting this semester with using an external site to host some code, data, and other instructional stuff. Don’t worry! If its essential, I’ll post a link to it on the ELMS page.",
+    "text": "As always, you’ll want to load the RCPA3 package at the start of your analysis so you can use the commands from the workbook:\nlibrary(RCPA3)",
     "crumbs": [
-      "Home"
+      "Class surveys",
+      "Pilot import and analyses"
+    ]
+  },
+  {
+    "objectID": "pilot_analysis.html#recoding-a-variable",
+    "href": "pilot_analysis.html#recoding-a-variable",
+    "title": "Pilot import and analyses",
+    "section": "Recoding a variable",
+    "text": "Recoding a variable\nThere are likely a number of cases where you will want to remove, collapse, or reorder categories of a survey response. For instance: many of the survey questions allow responses that are mostly ordinal but that include a “Not sure” response that should probably be treated as a non-response or combined with the middle category.\nFor instance, Q37 asks respondents to rank their own political views on a scale from Far left to Far right, but a small number of respondents said they were Not sure where they fit on this scale:\n\ntable(pilot$Q37)\n\n\n    Far left         Left  Center-left       Center Center-right        Right \n          27           88           64           22           34           12 \n   Far right     Not sure \n           3            9 \n\n\nTo treat these as NA values we can do the following steps:\n\nMake a copy of the variable we want to recode by assigning the values to a new column with a different name\nWrite a logical statement that will evaluate as TRUE for the responses we want to recode as an NA value\nUse the logical statement from step 2 to select the rows where Q37 is “not sure” and set those observations to equal NA.\n\n\npilot$lr_position &lt;- pilot$Q37 # make a copy of the original data in a new column\n\n\npilot$lr_position[pilot$Q37 == \"Not sure\"] &lt;- NA # replace the \"Not sure\" responses with NA\n\nThis kind of recoding is easy to mess up, so its always a good idea to check your results after you finish. You can use View(pilot) to bring up the data viewer and browse your results, or you can use freqC to get a frequency table, or just use the basic table function. Note here that there are now zero “Not sure” responses:\n\n# table just makes a simple frequency table\ntable(pilot$lr_position)\n\n\n    Far left         Left  Center-left       Center Center-right        Right \n          27           88           64           22           34           12 \n   Far right     Not sure \n           3            0 \n\n\n\nRecoding with transformC\nYou can also do a lot of useful recoding using the transformC function from the RCPA3 package. For instance, Q34_1 - Q34_5 are all feeling thermometer variables that ask respondents to rate their level of agreement or disagreement with a set of policy proposals. What if I wanted to split Q34_5 up into an ordered categorical variable?\nWe can use the cut option of transformC to cut the variable into five smaller groups:\n\npilot$expand_scotus&lt;-transformC(type='cut',               # use this option to cut a number into groups\n                                  data=pilot,             # the data set \n                                  x=Q34_5,                # the variable we're cutting\n                                  cut = c(20,40,60,80),   # the cutoff points\n                                  confirm=F)              # this turns off a prompt that asks us to confirm before executing the command\n\n# checking out the values \ntable(pilot$expand_scotus)\n\n\n[  0, 20) [ 20, 40) [ 40, 60) [ 60, 80) [ 80,100] \n       44        35        59        48        37 \n\n\nNow we might also want to add some descriptive labels to this variable in order to make it a little more coherent in a plot or table. To do this we modify the levels attribute with a vector of labels that we want to assign to each level of the variable:\n\nlevels(pilot$expand_scotus) &lt;- c(\"Strongly Disagree\", \"Disagree\", \"Neutral\", \"Agree\", \"Strongly Agree\")\n\n\ntable(pilot$expand_scotus)\n\n\nStrongly Disagree          Disagree           Neutral             Agree \n               44                35                59                48 \n   Strongly Agree \n               37 \n\n\n\n\nMaking an index\nIn some cases it makes sense to combine one or more questions on a related topic in order to get an aggregate measure of attitudes.\nFor instance, Q49_1 through Q49_5 ask about a respondent’s level of trust in various institutions. We might want to combine all of these into a single variable to create a single measure of generalized social trust.\nThere’s a number of ways we could approach this problem, but for this example, I’ll just convert this ordered factor variable into a number using as.numeric. Since the factor levels are already ordered from least trusting to most trusting, I can just add these numeric responses together to get an index where higher values indicate greater levels of trust.\n\ntotal_trust &lt;-  \n  as.numeric(pilot$Q49_1) +\n  as.numeric(pilot$Q49_2) +\n  as.numeric(pilot$Q49_3) +\n  as.numeric(pilot$Q49_4) +\n  as.numeric(pilot$Q49_5) \n\n\nsummary(total_trust)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n   5.00   12.00   14.00   13.64   16.00   19.00      27 \n\n\nNow we can use this to do things like compare the average level of trust between people who answered the survey on an Apple device compared to those who used a Windows or Android device:\n\nboxplotC(dv = total_trust, iv=pilot$apple, \n         xlab=\"Apple user?\", \n         y='Additive index of trust',\n         main = 'Social Trust by operating system' \n         )\n\n================================================================================\n                       Making Comparisons with Box Plots\n================================================================================",
+    "crumbs": [
+      "Class surveys",
+      "Pilot import and analyses"
+    ]
+  },
+  {
+    "objectID": "pilot_analysis.html#checking-missing-values",
+    "href": "pilot_analysis.html#checking-missing-values",
+    "title": "Pilot import and analyses",
+    "section": "Checking missing values",
+    "text": "Checking missing values\nGenerally, missing data in R will be represented as NA values. Running use is.na(x) will return TRUE if an observation is missing and FALSE if the observation is not missing.\nIf you use a numeric function on a logical value in R, TRUE values will get converted to 1 and FALSE values will get converted to 0. So if we wanted to know how many missing responses we had for Question 9, we could just sum the results of is.na(pilot$Q9) :\n\nsum(is.na(pilot$Q9))\n\n[1] 23\n\n\nWhat we do with this information is another question entirely, but having lots of missing data can pose issues for your analyses.",
+    "crumbs": [
+      "Class surveys",
+      "Pilot import and analyses"
+    ]
+  },
+  {
+    "objectID": "pilot_analysis.html#applying-a-new-variable-label",
+    "href": "pilot_analysis.html#applying-a-new-variable-label",
+    "title": "Pilot import and analyses",
+    "section": "Applying a new variable label",
+    "text": "Applying a new variable label\nThe pilot data set includes the exact wording of each question as a variable label. You’ll see these automatically when you use functions like freqC, but you can also view them by using Hmisc::label(variable_name)1\n\nHmisc::label(pilot$Q6) \n\n[1] \"How old are you (in years)?\"\n\n\nIf you have created a new variable, or if you want to replace an existing label with something shorter, you can just use Hmisc::label(varname) &lt;- \"New label\". For example, the label for Q19_1 is really long and might not even fit on a plot, so I can assign a new shorter label to it like this:\n\nHmisc::label(pilot$Q19_1) &lt;- \"Support for electing president by popular vote\"\n\nAnd now we can view the label again to check that our code worked:\n\nHmisc::label(pilot$Q19_1)\n\n[1] \"Support for electing president by popular vote\"",
+    "crumbs": [
+      "Class surveys",
+      "Pilot import and analyses"
+    ]
+  },
+  {
+    "objectID": "pilot_analysis.html#saving-data",
+    "href": "pilot_analysis.html#saving-data",
+    "title": "Pilot import and analyses",
+    "section": "Saving data",
+    "text": "Saving data\nIn general, I recommend that you save your code rather than trying to save data itself, but if you do want to have a local copy of the pilot data that you can alter as needed, you can save an R object by entering saveRDS(object, file='filename.rds'). For example:\n\nsaveRDS(pilot, file='my_pilot_copy.rds')\n\nThen, to restore the data, you would just load it back in by using the readRDS function:\n\npilot_data &lt;-readRDS('my_pilot_copy.rds')",
+    "crumbs": [
+      "Class surveys",
+      "Pilot import and analyses"
+    ]
+  },
+  {
+    "objectID": "pilot_analysis.html#footnotes",
+    "href": "pilot_analysis.html#footnotes",
+    "title": "Pilot import and analyses",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThe :: in Hmisc::label is a way to use a function from a package without having to load the entire package with the library function. You’ll typically see this when we just need to use one function from a package, or when the function shares a name with a function from a function from another package.↩︎",
+    "crumbs": [
+      "Class surveys",
+      "Pilot import and analyses"
+    ]
+  },
+  {
+    "objectID": "lecture_slides.html",
+    "href": "lecture_slides.html",
+    "title": "Slides",
+    "section": "",
+    "text": "Slides from previous lectures are in this section. (You’ll also see placeholders for future lecture slides. I haven’t made these yet!)"
+  },
+  {
+    "objectID": "faqs.html",
+    "href": "faqs.html",
+    "title": "FAQs",
+    "section": "",
+    "text": "This is a running list of questions that have come up a lot over the semester. If you’re here, you might also want to check out the page on basic troubleshooting in R.",
+    "crumbs": [
+      "FAQs"
+    ]
+  },
+  {
+    "objectID": "faqs.html#when-do-i-need-to-use-weights",
+    "href": "faqs.html#when-do-i-need-to-use-weights",
+    "title": "FAQs",
+    "section": "When do I need to use weights?",
+    "text": "When do I need to use weights?\nYou’ll typically use a weighting variable when you’re working with survey data. In this course, the nes data set will include a weight variable (wt), but there aren’t any weights for the world or states data sets.\nWeighting is used to make samples more closely resemble a target population. For instance, the NES has slightly more women respondents than you would expect from a true random sample from the general population so including the weighting variable makes the responses from men count more and the responses from women count slightly less.\n\n\n\n\n\n\ngender\nunweighted\nweighted\n\n\n\n\n1. Male\n3763 (46%)\n3964 (48%)\n\n\n2. Female\n4450 (54%)\n4262 (52%)\n\n\n\n\n\n\n\n\nThis concern isn’t really relevant for the world and states data sets because these aren’t samples: the states data set has data on the entire population of U.S. states, and the world data set has data on (more or less) all the countries.",
+    "crumbs": [
+      "FAQs"
+    ]
+  },
+  {
+    "objectID": "faqs.html#what-does-the-symbol-mean-as-in-worldccode",
+    "href": "faqs.html#what-does-the-symbol-mean-as-in-worldccode",
+    "title": "FAQs",
+    "section": "What does the $ symbol mean (as in world$ccode)?",
+    "text": "What does the $ symbol mean (as in world$ccode)?\nThe $ notation is one way that we can access a specific column of a dataframe in R. For instance, here’s a portion of the states data set:\n\n\n\n\nstateattend.pctabortlaws\n\nAlabama528\n\nAlaska228\n\nArizona2911\n\nArkansas5010\n\nCalifornia335\n\n\n\n\nIf I want to access the attend.pct variable, I can just type:\n\nstates$attend.pct\n\n [1] 52 22 29 50 33 29 30 35 35 45 35 45 39 44 40 48 47 53 23 37 30 38 38 60 43\n[26] 31 47 30 23 36 34 32 49 42 36 50 32 39 30 54 42 52 47 57 23 41 33 43 33 31\nattr(,\"label\")\n[1] \"% freq attend relig serv (Pew)\"\n\n\nTyping out a data set name and a dollar sign can get a little tedious, so many R functions will allow you to use an optional data argument that will allow you to be a little more concise. So these two commands will generate the exact same result, the only difference is that adding data=states saves me from having to write states$... over and over:\n\n# with the data = argument\ncompmeansC(dv = attend.pct, iv = region, data=states)\n\n# without the data = argument\ncompmeansC(dv= states$attend.pct, iv = states$region)",
+    "crumbs": [
+      "FAQs"
     ]
   },
   {
@@ -212,13 +633,13 @@
     "text": "This is a site for students taking GVPT 201 in Spring 2025. While the most important course material is stored on ELMS, I will occasionally post examples and other instructional materials and other cool stuff on this site."
   },
   {
-    "objectID": "faqs.html",
-    "href": "faqs.html",
-    "title": "FAQs",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome",
     "section": "",
-    "text": "This is a running list of questions that have come up a lot over the semester. If you’re here, you might also want to check out the page on basic troubleshooting in R.",
+    "text": "This is a site for students taking GVPT 201 in Spring 2025. While the most important course material is stored on ELMS, I’m experimenting this semester with using an external site to host some code, data, and other instructional stuff. Don’t worry! If its essential, I’ll post a link to it on the ELMS page.",
     "crumbs": [
-      "FAQs"
+      "Home"
     ]
   },
   {
@@ -233,73 +654,525 @@
     ]
   },
   {
+    "objectID": "pilot_codebook.html",
+    "href": "pilot_codebook.html",
+    "title": "Pilot codebook",
+    "section": "",
+    "text": "Codebook\n\n\n\n\n\n\n\n\n\n\n\n\n\nvarname\nquestion_text\ntype\nlabels\n\n\n\n\nQ2\nChoose one or more races that you consider yourself to be\nfactor\nAsian\nAsian,Other\nBlack or African American\nBlack or African American,Asian\nBlack or African American,Native Hawaiian or Other Pacific Islander\nBlack or African American,Other\nOther\nPrefer not to say\nWhite or Caucasian\nWhite or Caucasian,American Indian/Native American or Alaska Native\nWhite or Caucasian,Asian\nWhite or Caucasian,Asian,Other\nWhite or Caucasian,Native Hawaiian or Other Pacific Islander\nWhite or Caucasian,Other\n\n\nQ3\nAre you of Spanish, Hispanic, or Latino origin?\nfactor\nNo\nYes\n\n\nQ4\nWhat is the highest level of education you have completed?\nfactor\nSome high school or less\nHigh school diploma or GED\nSome college, but no degree\nAssociates or technical degree\nBachelor’s degree\nGraduate or professional degree (MA, MS, MBA, PhD, JD, MD, DDS etc.)\nPrefer not to say\n\n\nQ5\nWhat was your total household income before taxes during the past 12 months?\nfactor\nLess than $25,000\n$25,000-$49,999\n$50,000-$74,999\n$75,000-$99,999\n$100,000-$149,999\n$150,000 or more\nPrefer not to say\n\n\nQ6\nHow old are you (in years)?\nnumeric\n\n\n\nQ7\nHow do you describe yourself? - Selected Choice\nfactor\nFemale\nMale\nPrefer not to say\nPrefer to self-describe\n\n\nQ8\nDo you support or oppose the U.S. government's effort to either ban TikTok or force them to sell the company?\nfactor\nStrongly oppose\nOppose\nSomewhat oppose\nNeither support nor oppose\nSomewhat support\nSupport\nStrongly support\n\n\nQ9\nDo you support or oppose \"Medicare for all\"?\nfactor\nStrongly oppose\nOppose\nSomewhat oppose\nNeither support nor oppose\nSomewhat support\nSupport\nStrongly support\n\n\nQ10\nDo you support or oppose a wealth tax?\nfactor\nStrongly oppose\nOppose\nSomewhat oppose\nNeither support nor oppose\nSomewhat support\nSupport\nStrongly support\n\n\nQ11\nDo you support or oppose allowing immigration enforcement officers to enter public schools?\nfactor\nStrongly oppose\nOppose\nSomewhat oppose\nNeither support nor oppose\nSomewhat support\nSupport\nStrongly support\n\n\nQ12\nDo you support or oppose banning assault weapons?\nfactor\nStrongly oppose\nOppose\nSomewhat oppose\nNeither support nor oppose\nSomewhat support\nSupport\nStrongly support\n\n\nQ13\nDo you support or oppose legalizing recreational marijuana?\nfactor\nStrongly oppose\nOppose\nSomewhat oppose\nNeither support nor oppose\nSomewhat support\nSupport\nStrongly support\n\n\nQ14\nDid you vote in the 2024 presidential election?\nfactor\nNo\nYes\n\n\nQ15\nIf you had voted in the 2024 election, who would you have voted for? - Selected Choice\nfactor\nDonald Trump\nKamala Harris\nSomeone else\n\n\nQ16\nWho did you vote for in the 2024 election? - Selected Choice\nfactor\nDonald Trump\nKamala Harris\nSomeone else\n\n\nQ17\nWhen thinking about your vote, how much would you say that your decisions are influenced by the views of your family, friends, or community?\nfactor\nNone at all\nA little\nA moderate amount\nA lot\nA great deal\n\n\nQ18\nDo you plan to vote in the 2028 presidential election?\nfactor\nNo\nMaybe\nYes\n\n\nQ19_1\nOn a scale of 0 to 100, with 0 meaning \"strong opposition\" and 100 meaning \"strong support\" how would you feel about the following reforms to the process of voting and elections in our country: - Deciding the winner of presidential elections based on the national popular vote.\nnumeric\n\n\n\nQ19_2\nOn a scale of 0 to 100, with 0 meaning \"strong opposition\" and 100 meaning \"strong support\" how would you feel about the following reforms to the process of voting and elections in our country: - Implementing ranked choice voting\nnumeric\n\n\n\nQ19_3\nOn a scale of 0 to 100, with 0 meaning \"strong opposition\" and 100 meaning \"strong support\" how would you feel about the following reforms to the process of voting and elections in our country: - Making voting mandatory for all eligible adults\nnumeric\n\n\n\nQ19_4\nOn a scale of 0 to 100, with 0 meaning \"strong opposition\" and 100 meaning \"strong support\" how would you feel about the following reforms to the process of voting and elections in our country: - Setting a maximum age limit for voting in U.S. elections.\nnumeric\n\n\n\nQ19_5\nOn a scale of 0 to 100, with 0 meaning \"strong opposition\" and 100 meaning \"strong support\" how would you feel about the following reforms to the process of voting and elections in our country: - Allowing people who have been convicted of felonies to vote after they have served their sentences.\nnumeric\n\n\n\nQ19_6\nOn a scale of 0 to 100, with 0 meaning \"strong opposition\" and 100 meaning \"strong support\" how would you feel about the following reforms to the process of voting and elections in our country: - Requiring potential voters to show a photo ID before they can vote.\nnumeric\n\n\n\nQ19_7\nOn a scale of 0 to 100, with 0 meaning \"strong opposition\" and 100 meaning \"strong support\" how would you feel about the following reforms to the process of voting and elections in our country: - Conducting all elections by mail-in ballots\nnumeric\n\n\n\nQ19_8\nOn a scale of 0 to 100, with 0 meaning \"strong opposition\" and 100 meaning \"strong support\" how would you feel about the following reforms to the process of voting and elections in our country: - Adopting a proportional representation system\nnumeric\n\n\n\nQ20\nHow important a role would you say political donations play in the decisions elected officials make about government policy?\nfactor\nNone at all\nA little\nA moderate amount\nA lot\nA great deal\n\n\nQ21\nHow concerned are you about the role of foreign election interference in U.S. elections?\nfactor\nNone at all\nA little\nA moderate amount\nA lot\nA great deal\n\n\nQ22\nWhen it comes to abortion, which of these options comes closest to your view?\nfactor\nIt should be legal under any circumstances\nIt should be legal under most circumstances\nIt should be legal only in a few circumstances\nIt should be illegal in all circumstances\n\n\nQ23\nWhen thinking about your vote, how much would you say that your decisions are influenced by a candidate's views on abortion?\nfactor\nNone at all\nA little\nA moderate amount\nA lot\nA great deal\n\n\nQ24\nDo you believe Kamala Harris would have a better chance at winning the presidential election if Joe Biden stepped down sooner?\nfactor\nDefinitely not\nProbably not\nMight or might not\nProbably yes\nDefinitely yes\n\n\nQ25_1\nThe list below contains the names of some people who have been nominated or appointed to take in important roles in the Trump White House. How would you rate these picks on a scale of 0 to 100, with 0 being \"very bad\" and 100 being \"very good\"? - Pete Hegseth (Secretary of Defense)\nnumeric\n\n\n\nQ25_2\nThe list below contains the names of some people who have been nominated or appointed to take in important roles in the Trump White House. How would you rate these picks on a scale of 0 to 100, with 0 being \"very bad\" and 100 being \"very good\"? - Tulsi Gabbard (Director of National Intelligence)\nnumeric\n\n\n\nQ25_3\nThe list below contains the names of some people who have been nominated or appointed to take in important roles in the Trump White House. How would you rate these picks on a scale of 0 to 100, with 0 being \"very bad\" and 100 being \"very good\"? - Marco Rubio (Secretary of State)\nnumeric\n\n\n\nQ25_4\nThe list below contains the names of some people who have been nominated or appointed to take in important roles in the Trump White House. How would you rate these picks on a scale of 0 to 100, with 0 being \"very bad\" and 100 being \"very good\"? - Robert F. Kennedy Jr. (Health and Human Services)\nnumeric\n\n\n\nQ25_5\nThe list below contains the names of some people who have been nominated or appointed to take in important roles in the Trump White House. How would you rate these picks on a scale of 0 to 100, with 0 being \"very bad\" and 100 being \"very good\"? - Elon Musk (Department of Government Efficiency)\nnumeric\n\n\n\nQ26\nHow many of the executive orders issued by Donald Trump in his second term so far have been constitutional?\nfactor\nNone at all\nA few of them\nSome of them\nMost of them\nAll of them\nNot sure\n\n\nQ27_1\nBelow are some actions Trump has taken or attempted or proposed in his first term. On a scale of 0 to 100, with 0 being \"Strongly oppose\" and 100 being \"Strongly support\", how would you rate these efforts? - Ending Diversity, equity and inclusion efforts in the federal government\nnumeric\n\n\n\nQ27_2\nBelow are some actions Trump has taken or attempted or proposed in his first term. On a scale of 0 to 100, with 0 being \"Strongly oppose\" and 100 being \"Strongly support\", how would you rate these efforts? - Mass deportation of undocumented immigrants\nnumeric\n\n\n\nQ27_3\nBelow are some actions Trump has taken or attempted or proposed in his first term. On a scale of 0 to 100, with 0 being \"Strongly oppose\" and 100 being \"Strongly support\", how would you rate these efforts? - Closing USAID\nnumeric\n\n\n\nQ27_4\nBelow are some actions Trump has taken or attempted or proposed in his first term. On a scale of 0 to 100, with 0 being \"Strongly oppose\" and 100 being \"Strongly support\", how would you rate these efforts? - Banning the participation of transgender women in women's sports\nnumeric\n\n\n\nQ27_5\nBelow are some actions Trump has taken or attempted or proposed in his first term. On a scale of 0 to 100, with 0 being \"Strongly oppose\" and 100 being \"Strongly support\", how would you rate these efforts? - The U.S. taking control of the Gaza Strip\nnumeric\n\n\n\nQ27_6\nBelow are some actions Trump has taken or attempted or proposed in his first term. On a scale of 0 to 100, with 0 being \"Strongly oppose\" and 100 being \"Strongly support\", how would you rate these efforts? - Ending birthright citizenship\nnumeric\n\n\n\nQ27_7\nBelow are some actions Trump has taken or attempted or proposed in his first term. On a scale of 0 to 100, with 0 being \"Strongly oppose\" and 100 being \"Strongly support\", how would you rate these efforts? - Withdrawing from the World Health Organization\nnumeric\n\n\n\nQ28\nWould you support the U.S. purchasing Greenland?\nfactor\nNo\nMaybe\nYes\n\n\nQ29\nDo you support the pardons of the January 6th rioters?\nfactor\nNo\nMaybe\nYes\n\n\nQ30_1\nHow would you rate the importance of the following issues? - The Economy\nfactor\nNot at all important\nSlightly important\nModerately important\nVery important\nExtremely important\n\n\nQ30_2\nHow would you rate the importance of the following issues? - Healthcare\nfactor\nNot at all important\nSlightly important\nModerately important\nVery important\nExtremely important\n\n\nQ30_3\nHow would you rate the importance of the following issues? - Immigration\nfactor\nNot at all important\nSlightly important\nModerately important\nVery important\nExtremely important\n\n\nQ30_4\nHow would you rate the importance of the following issues? - Climate change\nfactor\nNot at all important\nSlightly important\nModerately important\nVery important\nExtremely important\n\n\nQ30_5\nHow would you rate the importance of the following issues? - U.S. China relations\nfactor\nNot at all important\nSlightly important\nModerately important\nVery important\nExtremely important\n\n\nQ31\nWould you say things in this country today are...\nfactor\nOff on the wrong track\nNot sure\nGenerally headed in the right direction\n\n\nQ32\nDo you have a negative or a positive opinion of Diversity, Equity, and Inclusion (DEI) programs?\nfactor\nExtremely negative\nSomewhat negative\nNeither positive nor negative\nSomewhat positive\nExtremely positive\n\n\nQ33\nOn a scale from 0 to 10, how would you rate the current job market in this country?\nnumeric\n\n\n\nQ34_1\nOn a scale of 0 to 100 with 0 meaning strong disapproval and 100 meaning strong approval, how would you rate each of the following proposed reforms to the U.S. Government? - A maximum age limit for presidents.\nnumeric\n\n\n\nQ34_2\nOn a scale of 0 to 100 with 0 meaning strong disapproval and 100 meaning strong approval, how would you rate each of the following proposed reforms to the U.S. Government? - Allowing presidents to run for a third term\nnumeric\n\n\n\nQ34_3\nOn a scale of 0 to 100 with 0 meaning strong disapproval and 100 meaning strong approval, how would you rate each of the following proposed reforms to the U.S. Government? - Increasing the number of Congress members from 435.\nnumeric\n\n\n\nQ34_4\nOn a scale of 0 to 100 with 0 meaning strong disapproval and 100 meaning strong approval, how would you rate each of the following proposed reforms to the U.S. Government? - Term limits for Supreme Court justices\nnumeric\n\n\n\nQ34_5\nOn a scale of 0 to 100 with 0 meaning strong disapproval and 100 meaning strong approval, how would you rate each of the following proposed reforms to the U.S. Government? - Increasing the number of Supreme Court justices from 9 to 12\nnumeric\n\n\n\nQ35\nDo you favor the U.S. increasing, decreasing, or maintaining the same amount of military aid to Ukraine?\nfactor\nDecreasing\nMaintaining current levels\nIncreasing\n\n\nQ36_1\nHere are some things the government spends money on. Would you say that government spending for each of these things should decrease, stay the same, or increase spending on these programs? - Medicare and Medicaid\nnumeric\n\n\n\nQ36_2\nHere are some things the government spends money on. Would you say that government spending for each of these things should decrease, stay the same, or increase spending on these programs? - Education\nnumeric\n\n\n\nQ36_3\nHere are some things the government spends money on. Would you say that government spending for each of these things should decrease, stay the same, or increase spending on these programs? - Foreign Aid\nnumeric\n\n\n\nQ36_4\nHere are some things the government spends money on. Would you say that government spending for each of these things should decrease, stay the same, or increase spending on these programs? - Border Security\nnumeric\n\n\n\nQ36_5\nHere are some things the government spends money on. Would you say that government spending for each of these things should decrease, stay the same, or increase spending on these programs? - Disease prevention\nnumeric\n\n\n\nQ36_6\nHere are some things the government spends money on. Would you say that government spending for each of these things should decrease, stay the same, or increase spending on these programs? - Counterterrorism\nnumeric\n\n\n\nQ36_7\nHere are some things the government spends money on. Would you say that government spending for each of these things should decrease, stay the same, or increase spending on these programs? - Social welfare programs\nnumeric\n\n\n\nQ37\nIn general, how would you describe your own political views?\nfactor\nFar left\nLeft\nCenter-left\nCenter\nCenter-right\nRight\nFar right\nNot sure\n\n\nQ38\nOn a scale from 0 to 10, how well do you think the political system in your country works for people like you?\nnumeric\n\n\n\nQ39\nGenerally speaking, do you think of yourself as a - Selected Choice\ncharacter\n\n\n\nQ40\nGenerally speaking, do you think of yourself as a\ncharacter\n\n\n\nQ41\nDo you think of yourself as closer to the Democratic or the Republican Party?\ncharacter\n\n\n\nQ42\nHow would you rate the quality of democracy in the United States?\nnumeric\n\n\n\nQ43\nThe U.S. dedicates about $40 billion to foreign aid each year. That's about 0.24% of the national income, or around $119 per person. Would you say this amount is too much, too little, or about right?\nfactor\nFar too little\nModerately too little\nSlightly too little\nNeither too much nor too little\nSlightly too much\nModerately too much\nFar too much\n\n\nQ44\nDo you agree or disagree with the following statement? \"When jobs are scarce, employers should give priority to American people over immigrants.\"\nfactor\nStrongly disagree\nDisagree\nSomewhat disagree\nNeither agree nor disagree\nSomewhat agree\nAgree\nStrongly agree\n\n\nQ45\nWould you say you agree or disagree with the following statement \"I see myself as a world citizen\"?\nfactor\nStrongly disagree\nDisagree\nSomewhat disagree\nNeither agree nor disagree\nSomewhat agree\nAgree\nStrongly agree\n\n\nQ46\nDo you agree or disagree with the following statement? \"America's leaders should focus on solving our problems in this country, even if it means other countries are worse off\"\nfactor\nStrongly disagree\nDisagree\nSomewhat disagree\nNeither agree nor disagree\nSomewhat agree\nAgree\nStrongly agree\n\n\nQ47\nDo you agree or disagree with the following statement? \"Economic growth and creating jobs should be the top priority, even if the environment suffers to some extent. \"\nfactor\nStrongly disagree\nDisagree\nSomewhat disagree\nNeither agree nor disagree\nSomewhat agree\nAgree\nStrongly agree\n\n\nQ48\nDo you agree or disagree with the following statement? \"The U.S. should rejoin the Paris Climate agreement\"\nfactor\nStrongly disagree\nDisagree\nSomewhat disagree\nNeither agree nor disagree\nSomewhat agree\nAgree\nStrongly agree\n\n\nQ49_1\nHow much of the time do you think you can trust these groups to do the right thing? - The federal government\nfactor\nNever\nSometimes\nAbout half the time\nMost of the time\nAlways\n\n\nQ49_2\nHow much of the time do you think you can trust these groups to do the right thing? - Religious leaders\nfactor\nNever\nSometimes\nAbout half the time\nMost of the time\nAlways\n\n\nQ49_3\nHow much of the time do you think you can trust these groups to do the right thing? - The media\nfactor\nNever\nSometimes\nAbout half the time\nMost of the time\nAlways\n\n\nQ49_4\nHow much of the time do you think you can trust these groups to do the right thing? - Police\nfactor\nNever\nSometimes\nAbout half the time\nMost of the time\nAlways\n\n\nQ49_5\nHow much of the time do you think you can trust these groups to do the right thing? - Your family and friends\nfactor\nNever\nSometimes\nAbout half the time\nMost of the time\nAlways\n\n\nQ50\nHow often would you say you use social media apps like TikTok, Facebook, or Instagram to learn more about politics?\nfactor\nNever\nOnce a week\n2-3 times a week\n4-6 times a week\nDaily\n\n\nQ51\nHow often would you say you read, watch, or listen to news about U.S. politics?\nfactor\nNever\nOnce a week\n2-3 times a week\n4-6 times a week\nDaily\n\n\nQ52\nDo believe that social media has a positive or negative influence on American politics?\nfactor\nExtremely negative\nSomewhat negative\nNeither positive nor negative\nSomewhat positive\nExtremely positive\n\n\nQ53\nHow often do you discuss politics with people who hold opposing views?\nfactor\nNever\nRarely\nSometimes\nOften\nAll the time\n\n\nparty_id\nParty ID (combined summary)\nfactor\nStrong Democrat\nNot very strong Democrat\nIndependent Democrat\nIndependent\nIndependent Republican\nNot very strong Republican\nStrong Republican\n\n\nvote_choice\nPreferred presidential vote (combined summary)\nfactor\nDonald Trump\nKamala Harris\nSomeone else\n\n\napple\nApple user\nlogical\n\n\n\n\n\n\n\n\n\n\n\n\nNote\nparty_id, vote_choice and apple are all variables that have been recoded from combining survey questions.",
+    "crumbs": [
+      "Class surveys",
+      "Pilot codebook"
+    ]
+  },
+  {
     "objectID": "slides_TCh00.html#lecture",
     "href": "slides_TCh00.html#lecture",
     "title": "Introductions",
     "section": "Lecture",
-    "text": "Lecture\nThis is what you’re doing right now. Expect something very much like this.\n\nChoices\n\n\nAttend in person (this is the only format where you can ask questions!)\nWatch Zoom (check the Zoom tab on ELMS)\nWatch recordings on Panopto (check the “Lecture Recordings” section on in Panopto tab)",
-    "crumbs": [
-      "Introductions"
-    ]
+    "text": "Lecture\nThis is what you’re doing right now. Expect something very much like this.\n\nChoices\n\n\nAttend in person (this is the only format where you can ask questions!)\nWatch Zoom (check the Zoom tab on ELMS)\nWatch recordings on Panopto (check the “Lecture Recordings” section on in Panopto tab)\n\n\n\n\nDue dates listed on ELMS are hard deadlines."
   },
   {
     "objectID": "slides_TCh00.html#discussion-sections",
     "href": "slides_TCh00.html#discussion-sections",
     "title": "Introductions",
     "section": "Discussion sections",
-    "text": "Discussion sections\n\n\nEvery Friday, led by your TA\nJoin in person or on Zoom.\n\nZoom participants must have cameras on during the class\n\nAttendance is mandatory and participation is 10% of your grade\n\nRecordings will still be on ELMS in the “Section Recordings” folder of the Panopto tab\n\nThis is your best chance to ask homework questions, get feedback, and clarify concepts.",
-    "crumbs": [
-      "Introductions"
-    ]
+    "text": "Discussion sections\n\n\nEvery Friday, led by your TA\nJoin in person or on Zoom.\n\nZoom participants must have cameras on during the class\n\nAttendance is mandatory and participation is 10% of your grade\n\nRecordings will still be on ELMS in the “Section Recordings” folder of the Panopto tab\n\nThis is your best chance to ask homework questions, get feedback, and clarify concepts, so come prepared. (Read workbook and look at homework beforehand)"
   },
   {
     "objectID": "slides_TCh00.html#resources",
     "href": "slides_TCh00.html#resources",
     "title": "Introductions",
     "section": "Resources",
-    "text": "Resources\nThere’s additional materials on the syllabus.\nGoing forward I will generally try to organize the most important stuff on the modules tab in ELMS.",
-    "crumbs": [
-      "Introductions"
-    ]
+    "text": "Resources\nThere’s additional materials on the syllabus.\nGoing forward I will generally try to link study materials on the modules tab in ELMS."
   },
   {
     "objectID": "slides_TCh00.html#political-science-research",
     "href": "slides_TCh00.html#political-science-research",
     "title": "Introductions",
     "section": "Political Science Research",
-    "text": "Political Science Research\n\n\nNormative Research\n“Ought” questions\n\nWhat constitutes a just society?\nWhat are the qualities of a good leader?\nWhat obligations do citizens have towards their governments?\n\n\nEmpirical Research\n“Is/Are” questions\n\nAre democracies less likely to go to war compared to autocracies?\nDo protests prompt political change?\nWhen are political parties most likely to be unified around a shared platform or ideology?\n\n\n\n\nThis course will focus primarily on the empirical and quantitative aspects of research.\n\n\nBut ideally, these goals should inform each other.",
-    "crumbs": [
-      "Introductions"
-    ]
+    "text": "Political Science Research\n\n\nNormative Research\n“Ought” questions\n\nWhat constitutes a just society?\nWhat are the qualities of a good leader?\nWhat obligations do citizens have towards their governments?\n\n\nEmpirical Research\n“Is/Are” questions\n\nAre democracies less likely to go to war compared to autocracies?\nDo protests prompt political change?\nWhen are political parties most likely to be unified around a shared platform or ideology?\n\n\n\n\nThis course will focus primarily on the empirical and quantitative aspects of research.\n\n\nBut ideally, these goals should inform each other."
   },
   {
     "objectID": "slides_TCh00.html#empirical-research-goals",
     "href": "slides_TCh00.html#empirical-research-goals",
     "title": "Introductions",
     "section": "Empirical Research: goals",
-    "text": "Empirical Research: goals\n\nIdentify a research question\nDefine key concepts\nFormulate a testable hypothesis\nCollect data, conduct analysis, and assess results\nCollectively: accumulate knowledge about the world",
-    "crumbs": [
-      "Introductions"
-    ]
+    "text": "Empirical Research: goals\n\nIdentify a research question\nDefine key concepts\nFormulate a testable hypothesis\nCollect data, conduct analysis, and assess results\nCollectively: accumulate knowledge about the world"
   },
   {
     "objectID": "slides_TCh00.html#empirical-research-stats",
     "href": "slides_TCh00.html#empirical-research-stats",
     "title": "Introductions",
     "section": "Empirical Research: Stats",
-    "text": "Empirical Research: Stats\n\n\nNumbers are for nerds, but you need some stats and basic programming skills to get through this course, this program, and probably your career and for general life stuff.",
-    "crumbs": [
-      "Introductions"
-    ]
+    "text": "Empirical Research: Stats\n\n\nNumbers are for nerds, but you need some stats and basic programming skills to get through this course, this program, and probably your career and for general life stuff."
   },
   {
     "objectID": "slides_TCh00.html#conceptual-outline-of-the-course",
     "href": "slides_TCh00.html#conceptual-outline-of-the-course",
     "title": "Introductions",
     "section": "Conceptual Outline of the course",
-    "text": "Conceptual Outline of the course\n\nWeeks 1 through 3: How to measure stuff and why it matters\nWeeks 4 through 8: Description, comparison, and hypotheses\nWeeks 9 through 10: inference and statistical tests\nWeeks 11 through 14: correlation and regression analysis",
-    "crumbs": [
-      "Introductions"
-    ]
+    "text": "Conceptual Outline of the course\n\nWeeks 1 through 3: How to measure stuff and why it matters\nWeeks 4 through 8: Description, comparison, and hypotheses\nWeeks 9 through 10: inference and statistical tests\nWeeks 11 through 14: correlation and regression analysis"
+  },
+  {
+    "objectID": "slides_TCh00.html#grades",
+    "href": "slides_TCh00.html#grades",
+    "title": "Introductions",
+    "section": "Grades",
+    "text": "Grades\n\n\nWorkbook HW (25%): R coding, usually due on Thursdays at midnight\nSurvey analysis (35%): design, distribute, and analyze a (non-representative) public opinion survey. Assignments will generally be due on Fridays at midnight.\n\nBiggest component is an end-of-term data analysis paper\n\nExams (25%): open-notes/open book exams administered through ELMS.\n\nFirst in March before Spring Break\nSecond exam in May\n\nSection participation (10%): Based on engagement, not participation alone.\nLab (5%): participate in 3 studies conducted by GVPT faculty and students."
+  },
+  {
+    "objectID": "slides_TCh02.html#concepts-and-variables",
+    "href": "slides_TCh02.html#concepts-and-variables",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Concepts and variables",
+    "text": "Concepts and variables\n\nDefinition: identifying concrete features of the objects or events we’re studying and the tools to measure them.\nMeasurement representing real-life objects and events as variables\nDescription making generalizations about variables"
+  },
+  {
+    "objectID": "slides_TCh02.html#variables",
+    "href": "slides_TCh02.html#variables",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Variables",
+    "text": "Variables\n\nThe results of the measurement process.\nBy definition a variable must vary\nHow we describe a variable will depend on how we measure it."
+  },
+  {
+    "objectID": "slides_TCh02.html#nominal-variables",
+    "href": "slides_TCh02.html#nominal-variables",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Nominal Variables",
+    "text": "Nominal Variables\n\n\nNominal variables are categorical variables with no intrinsic ordering.\nExamples include the names of countries or people, someone’s religion or racial/ethnic self id\nSome nominal variables are represented by numbers, but the values of those numbers are arbitrary: zip codes, jersey numbers, and telephone numbers are still nominal because there’s no ordering to them.\n\n\n\nThe region of a particular U.S. state is a nominal variable: there’s a fixed number of categories and no intrinsic ordering"
+  },
+  {
+    "objectID": "slides_TCh02.html#ordinal-variables",
+    "href": "slides_TCh02.html#ordinal-variables",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Ordinal Variables",
+    "text": "Ordinal Variables\n\n\n\nOrdinal variables have a small number of categories that can be ordered.\nHowever, the gaps between differing ranks may be unequal.\n\n\nTop finishing times for Boston Marathon in 2024. The placements are ordinal: the distance in time between first and second place doesn’t necessarily equal the distance between second and third."
+  },
+  {
+    "objectID": "slides_TCh02.html#ordinal-variables-1",
+    "href": "slides_TCh02.html#ordinal-variables-1",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Ordinal Variables",
+    "text": "Ordinal Variables\nA common source of ordinal variables will be survey items that ask people to rate their position on a scale from “strongly agree” to “strongly disagree” or “very important” to “not at all important”.\n\n\n\n ANES question from 2020 about the importance of people agreeing about basic facts"
+  },
+  {
+    "objectID": "slides_TCh02.html#ordinal-variables-2",
+    "href": "slides_TCh02.html#ordinal-variables-2",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Ordinal Variables",
+    "text": "Ordinal Variables\nAnother source of ordinal variables might be data that we’ve grouped into ordered categories based on another variable.\n\nFor instance: the World Bank classifies countries into four ordinal categories based on their per-capita GDP. There’s a clear ordering, but the spaces are not equal."
+  },
+  {
+    "objectID": "slides_TCh02.html#ordinal-variables-3",
+    "href": "slides_TCh02.html#ordinal-variables-3",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Ordinal Variables",
+    "text": "Ordinal Variables\nTwo things to keep in mind when working with ordinal variables:\n\n\n\n\n\nThe “ordering” might be partly a question of your own research question. You could flip these or combine categories to arrange them from “most partisan” to “least partisan”.\nSome survey variables may only be ordinal after you remove all the people who gave “don’t know” responses."
+  },
+  {
+    "objectID": "slides_TCh02.html#interval-variables",
+    "href": "slides_TCh02.html#interval-variables",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Interval Variables",
+    "text": "Interval Variables\n\nThese are just numbers. They’re measured along a continuum with equal spacing (i.e., the difference from 3 and 4 is “the same” as the difference between 6 and 7)\nExamples: age, height, temperature, distance."
+  },
+  {
+    "objectID": "slides_TCh02.html#interval-variables-1",
+    "href": "slides_TCh02.html#interval-variables-1",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Interval Variables",
+    "text": "Interval Variables\n“True” interval variables are less common in survey research, but we’ll often treat ordinal variables as “more-or-less interval” if they a lot (7+) categories\n\nStrictly speaking these “feeling thermometer” responses are more like ordinal variables. But they’re close enough for us to treat them like interval variables for most purposes."
+  },
+  {
+    "objectID": "slides_TCh02.html#dichotomousdummy-variables",
+    "href": "slides_TCh02.html#dichotomousdummy-variables",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Dichotomous/Dummy Variables",
+    "text": "Dichotomous/Dummy Variables\n\nDichotomous variables that take on only two values: TRUE/FALSE, or Republican/Democrat, War/Peace etc.\n“Dummy” variables will encode this dichotomy as 0s and 1s, which can simplify some math operations\n\nMost importantly: the mean of a dummy variable = the proportion of 1s in the data!\n\n\n\n\ndummy_vector &lt;- c(1,1,1,1,0,0,0,0,0,0)\n\nmean(dummy_vector)\n\n[1] 0.4"
+  },
+  {
+    "objectID": "slides_TCh02.html#dichotomousdummy",
+    "href": "slides_TCh02.html#dichotomousdummy",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Dichotomous/Dummy",
+    "text": "Dichotomous/Dummy\nDummy coding is important for statistical modeling because how we can make nominal data into meaningful numeric data:\n\n\n\n\n\n\nWho did you vote for in 2020?\nTrump\nBiden\nStein\n\n\n\n\nTrump\n1\n0\n0\n\n\nBiden\n0\n1\n0\n\n\nJill Stein\n0\n0\n1"
+  },
+  {
+    "objectID": "slides_TCh02.html#index-variables",
+    "href": "slides_TCh02.html#index-variables",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Index variables",
+    "text": "Index variables\nSome surveys may measure an attitude by asking multiple questions on the same topic and then aggregating those responses. These aggregate indexes are often treated as interval-level variables.\n\n\nThe values highlighted in red indicate more “authoritarian” attitudes toward child rearing.\n\n\n\n\n\n\nquestion\nvalue\npercent\n\n\n\n\nConsiderate vs. Well-behaved\nBeing considerate\n72%\n\n\nWell behaved\n28%\n\n\nCuriosity vs. Good Manners\nCuriosity\n39%\n\n\nGood manners\n61%\n\n\nSelf Reliance vs. Obedience\nObedience\n44%\n\n\nSelf-reliance\n56%\n\n\nIndependence vs. Respect for Elders\nIndependence\n31%\n\n\nRespect for elders\n69%\n\n\n\n\n\n\n\n\n\nThe “authoritarianism” column is an index variable created by counting the number of “authoritarian” answers to a single question.\n\n\n\n\n\n\nauthoritarianism\npercent\ncumulative %\n\n\n\n\n0\n18.3%\n18.3%\n\n\n1\n17.7%\n36.0%\n\n\n2\n23.2%\n59.2%\n\n\n3\n25.1%\n84.2%\n\n\n4\n15.8%\n100.0%"
+  },
+  {
+    "objectID": "slides_TCh02.html#multiple-levels-of-measurement",
+    "href": "slides_TCh02.html#multiple-levels-of-measurement",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Multiple levels of measurement",
+    "text": "Multiple levels of measurement\nIt is often possible to measure the same variable at multiple levels of measurement.\n“Education”, for instance, could be recorded as interval, ordinal, or dichotomous:\n\n\n\n\n\n\n\n\nYears of schooling\nHighest Level of Schooling Completed\nSome College\n\n\n\n\n9\nLess than High School\nNo\n\n\n10\nLess than High School\nNo\n\n\n12\nHigh School\nNo\n\n\n13\nSome College\nYes\n\n\n14\nSome College\nYes\n\n\n15\nSome College\nYes\n\n\n16\nBachelor’s\nYes\n\n\n17\nPost Bachelor’s\nYes"
+  },
+  {
+    "objectID": "slides_TCh02.html#multiple-levels-of-measurement-1",
+    "href": "slides_TCh02.html#multiple-levels-of-measurement-1",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Multiple levels of measurement",
+    "text": "Multiple levels of measurement\nIts often preferable to use the highest level of precision available, but sometimes we choose a less precise measure because its more parsimonious, less “noisy”, or easier to display in a table or graph.\n\nFor example: many analyses of Trump supporters will collapse education into college vs. non-college because (at least for whites) there’s a clear division between college grads and non-college grads:"
+  },
+  {
+    "objectID": "slides_TCh02.html#unit-of-analysis-and-levels-of-measurement",
+    "href": "slides_TCh02.html#unit-of-analysis-and-levels-of-measurement",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Unit of analysis and levels of measurement",
+    "text": "Unit of analysis and levels of measurement\nKeep in mind that aggregation changes the unit of analysis. “Did you vote for Trump in 2020?” is dichotomous, but Trump’s share of the vote across an entire state is continuous:"
+  },
+  {
+    "objectID": "slides_TCh02.html#histogram",
+    "href": "slides_TCh02.html#histogram",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Histogram",
+    "text": "Histogram\n\n\n\nUse: visualizing the distribution of interval variables.\nDivide data into equally sized “bins” and count the number in each. The height of each bar indicates the number of values in that bin."
+  },
+  {
+    "objectID": "slides_TCh02.html#density-plot",
+    "href": "slides_TCh02.html#density-plot",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Density Plot",
+    "text": "Density Plot\n\n\n\nUse: visualizing the distribution of interval variables\nSort of a “smoothed” version of the histogram. The area of the entire curve is one, and the height of the curve at a given point indicates how much of the data is in that region."
+  },
+  {
+    "objectID": "slides_TCh02.html#box-plots",
+    "href": "slides_TCh02.html#box-plots",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Box plots",
+    "text": "Box plots\n\n\n\nUse: visualizing the distribution of interval variables.\nShows the “five number summary” (minimum, 25th percentile, median/mean, 75th percentile, maximum)\nEspecially useful for making comparisons across groups or describing multiple items with similar scales."
+  },
+  {
+    "objectID": "slides_TCh02.html#bar-plot",
+    "href": "slides_TCh02.html#bar-plot",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Bar plot",
+    "text": "Bar plot\n\n\n\nUse: visualizing the distribution of categorical variables\nCount the frequency (or proportion) of observations in each group"
+  },
+  {
+    "objectID": "slides_TCh02.html#measures-of-central-tendency",
+    "href": "slides_TCh02.html#measures-of-central-tendency",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Measures of Central Tendency",
+    "text": "Measures of Central Tendency\n(some things you probably remember from school)"
+  },
+  {
+    "objectID": "slides_TCh02.html#central-tendency",
+    "href": "slides_TCh02.html#central-tendency",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Central Tendency",
+    "text": "Central Tendency\n\n\n\n\n\n\n\nNominal\nOrdinal\nInterval\n\n\n\n\nMean\n❌\n❌\n✅\n\n\nMedian\n❌\n✅\n✅\n\n\nMode\n✅\n✅\n✅"
+  },
+  {
+    "objectID": "slides_TCh02.html#measures-of-dispersion",
+    "href": "slides_TCh02.html#measures-of-dispersion",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Measures of Dispersion",
+    "text": "Measures of Dispersion"
+  },
+  {
+    "objectID": "slides_TCh02.html#dispersion",
+    "href": "slides_TCh02.html#dispersion",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Dispersion",
+    "text": "Dispersion\n\n\n\n\n\n\n\n\nNominal\nOrdinal\nInterval\n\n\n\n\nStandard Deviation\n❌\n❌\n✅\n\n\nIQR\n❌\n✅\n✅"
+  },
+  {
+    "objectID": "slides_TCh02.html#skew",
+    "href": "slides_TCh02.html#skew",
+    "title": "Chapter 2: Measurement and Description",
+    "section": "Skew",
+    "text": "Skew\nSkew refers to the degree of asymmetry in data."
+  },
+  {
+    "objectID": "slides_TCh04.html#cross-tabulation-step-1",
+    "href": "slides_TCh04.html#cross-tabulation-step-1",
+    "title": "Chapter 4: Research Design",
+    "section": "Cross tabulation: Step 1",
+    "text": "Cross tabulation: Step 1\nStart by calculating the number of observations with each value of each category:\n\n\n\n\n\n\n\n\niv\ndv\n\n\n\n\nHIGH\nNo\n\n\nHIGH\nNo\n\n\nLOW\nNo\n\n\nHIGH\nYes\n\n\nHIGH\nYes\n\n\nHIGH\nYes\n\n\nHIGH\nYes\n\n\nLOW\nYes\n\n\nLOW\nYes\n\n\nLOW\nYes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\niv\n\n\n\ndv\nLOW\nHIGH\n\n\n\n\nNo\n1\n2\n\n\nYes\n3\n4\n\n\n\n\n\nTotal\n4\n6"
+  },
+  {
+    "objectID": "slides_TCh04.html#cross-tabulation-step-2",
+    "href": "slides_TCh04.html#cross-tabulation-step-2",
+    "title": "Chapter 4: Research Design",
+    "section": "Cross tabulation: Step 2",
+    "text": "Cross tabulation: Step 2\nThen, calculate the proportion/percentage of observations among each value of the IV.\nIf the independent variable is in the columns, then the columns should sum to 100%.\nIf the independent variable is in the rows, then the rows should sum to 100%.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\niv\n\n\n\ndv\nLOW\nHIGH\n\n\n\n\nNo\n1\n2\n\n\nYes\n3\n4\n\n\n\n\n\nTotal\n4\n6\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\niv\n\n\n\ndv\nLOW\nHIGH\n\n\n\n\nNo\n1 (25%)\n2 (33%)\n\n\nYes\n3 (75%)\n4 (67%)\n\n\n\n\n\nTotal\n4\n6"
+  },
+  {
+    "objectID": "slides_TCh04.html#cross-tabulation-interpretation",
+    "href": "slides_TCh04.html#cross-tabulation-interpretation",
+    "title": "Chapter 4: Research Design",
+    "section": "Cross tabulation: interpretation",
+    "text": "Cross tabulation: interpretation\nLook at what happens to the DV at different values of the IV. If your variables are ordinal, you should be able to identify a direction of the effect.\nThe proportion of “Yes” values decreases as the IV goes from lower to higher, so this is a negative or inverse relationship.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\niv\n\n\n\ndv\nLOW\nHIGH\n\n\n\n\nNo\n1 (25%)\n2 (33%)\n\n\nYes\n3 (75%)\n4 (67%)\n\n\n\n\n\nTotal\n4\n6\n\n\n\n\n\n\n\n\n\nUsing a bar graph or line graph can make these relationships easier to spot:"
+  },
+  {
+    "objectID": "slides_TCh04.html#cross-tabulation-notes",
+    "href": "slides_TCh04.html#cross-tabulation-notes",
+    "title": "Chapter 4: Research Design",
+    "section": "Cross tabulation: notes",
+    "text": "Cross tabulation: notes\n\nKey rule: always calculate percentages or proportions by categories of the independent variable.\n\nThis allows you to compare groups that are different sizes.\n\nIf one or both variables are interval-level, you can bin them in order to use them in a cross tab. For instance, you could separate an interval like into a series of age ranges."
+  },
+  {
+    "objectID": "slides_TCh04.html#cross-tabulation-example",
+    "href": "slides_TCh04.html#cross-tabulation-example",
+    "title": "Chapter 4: Research Design",
+    "section": "Cross tabulation: example",
+    "text": "Cross tabulation: example\nHypothesis: in a comparison of individuals, independents are less likely to turn out to vote compared to people who support one party or another.\n\nHow should I calculate proportions here?\n\n\n\n\nVoter Turnout in 2020 by party ID\n\n\n\n\n\n\n\n\n\n\nParty ID\n\n\n\nturnout2020\nDemocrat\nIndependent\nRepublican\n\n\n\n\n0. Did not vote\n335\n316\n382\n\n\n1. Voted\n3160\n560\n2714"
+  },
+  {
+    "objectID": "slides_TCh04.html#cross-tabulation-example-1",
+    "href": "slides_TCh04.html#cross-tabulation-example-1",
+    "title": "Chapter 4: Research Design",
+    "section": "Cross tabulation: example",
+    "text": "Cross tabulation: example\nAre these results generally consistent with my hypothesis?\n\n\n\n\n\n\nVoter Turnout in 2020 by party ID\n\n\n\n\n\n\n\n\n\n\nParty ID\n\n\n\nturnout2020\nDemocrat\nIndependent\nRepublican\n\n\n\n\n0. Did not vote\n335 (10%)\n316 (36%)\n382 (12%)\n\n\n1. Voted\n3160 (90%)\n560 (64%)\n2714 (88%)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIf we think of party ID as an ordered variable, this is a curvilinear relationship."
+  },
+  {
+    "objectID": "slides_TCh04.html#rowcolumn-percentages",
+    "href": "slides_TCh04.html#rowcolumn-percentages",
+    "title": "Chapter 4: Research Design",
+    "section": "Row/Column percentages",
+    "text": "Row/Column percentages\nWhat happens if I calculate % among the values of the DV?\nHere’s the relationship between education and voter turnout with % calculated on education level:\n\n\n\n\nVoter Turnout in 2020 by highest level of education completed\n\n\n\n\n\n\n\n\n\n\n\n\nEducation\n\n\n\nturnout2020\n1. Less than high school credential\n2. High school credential\n3. Some post-high school, no bachelor's degree\n4. Bachelor's degree\n5. Graduate degree\n\n\n\n\n0. Did not vote\n130 (41%)\n286 (24%)\n380 (15%)\n135 (7%)\n91 (6%)\n\n\n1. Voted\n185 (59%)\n883 (76%)\n2148 (85%)\n1749 (93%)\n1388 (94%)\n\n\n\nNote: \n\n\n\n\n\n\n\n Column % in parentheses\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe results suggest a positive or direct relationship: as education increases, so does the % turnout."
+  },
+  {
+    "objectID": "slides_TCh04.html#rowcolumn-percentages-1",
+    "href": "slides_TCh04.html#rowcolumn-percentages-1",
+    "title": "Chapter 4: Research Design",
+    "section": "Row/Column percentages",
+    "text": "Row/Column percentages\nWhat happens if I calculate % among the values of the DV?\nHere’s the relationship between education and voter turnout with % calculated across voter turnout\n\n\n\n\nVoter Turnout in 2020 by highest level of education completed\n\n\n\n\n\n\n\n\n\n\n\n\nEducation\n\n\n\nturnout2020\n1. Less than high school credential\n2. High school credential\n3. Some post-high school, no bachelor's degree\n4. Bachelor's degree\n5. Graduate degree\n\n\n\n\n0. Did not vote\n130 (13%)\n286 (28%)\n380 (37%)\n135 (13%)\n91 (9%)\n\n\n1. Voted\n185 (3%)\n883 (14%)\n2148 (34%)\n1749 (28%)\n1388 (22%)\n\n\n\nNote: \n\n\n\n\n\n\n\n Row % in parentheses\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHere, the results can give the misleading impression that there’s a curvilinear relationship: turnout drops off for Bachelor’s Degrees and above."
+  },
+  {
+    "objectID": "slides_TCh04.html#rowcolumn-percentages-2",
+    "href": "slides_TCh04.html#rowcolumn-percentages-2",
+    "title": "Chapter 4: Research Design",
+    "section": "Row/Column percentages",
+    "text": "Row/Column percentages\nEither of these tables might be a valid way to look at these data, but they answer slightly different questions:\n\n\nIf I want to compare turnout at different levels of education, then I need to calculate % turnout among people with different levels of education.\nIf I want to compare education among voters and non-voters, then I need to calculate % education among people who voted and didn’t vote.\nWhich variable is the IV or DV is sometimes a theoretical question, but in this case its unlikely that voting is causing people to become more educated, so it probably doesn’t make sense to calculate percentages by voting vs. non-voting."
+  },
+  {
+    "objectID": "slides_TCh04.html#mean-comparison-1",
+    "href": "slides_TCh04.html#mean-comparison-1",
+    "title": "Chapter 4: Research Design",
+    "section": "Mean Comparison",
+    "text": "Mean Comparison\nGDP data has been grouped into five categories, so now I just need to calculate the average of CO2 emissions within each group of the ordinal IV:\n\n\n\n\nGDP Per capita range\nCO2 emissions per capita\n\n\n\n\n1. $3k or less\n0.3128312\n\n\n2. $3k to $10k\n1.2680574\n\n\n3. $10k to $25k\n4.4065669\n\n\n4. $25k to $45k\n8.0307610\n\n\n5. $45k or more\n12.3134306\n\n\n\n\n\n\n\nIs this generally consistent with expectations?"
+  },
+  {
+    "objectID": "slides_TCh04.html#mean-comparison-2",
+    "href": "slides_TCh04.html#mean-comparison-2",
+    "title": "Chapter 4: Research Design",
+    "section": "Mean Comparison",
+    "text": "Mean Comparison\nHere again, the relationship can be easier to conceptualize if we plot it."
+  },
+  {
+    "objectID": "slides_TCh04.html#curvilinear-relationships",
+    "href": "slides_TCh04.html#curvilinear-relationships",
+    "title": "Chapter 4: Research Design",
+    "section": "Curvilinear Relationships",
+    "text": "Curvilinear Relationships\nA relationship like this will rarely be perfectly straight, so “linearity” and “curvilinearity” are partly a matter of degree, but there are some cases where there is a clear “U” shape to the relationship:\n\n\n\n\n\n\niv\ndv\n\n\n\n\n1. Extremely liberal\n6.314\n\n\n2. Liberal\n5.685\n\n\n3. Slightly liberal\n5.001\n\n\n4. Moderate; middle of the road\n4.651\n\n\n5. Slightly conservative\n4.636\n\n\n6. Conservative\n4.974\n\n\n7. Extremely conservative\n5.363"
+  },
+  {
+    "objectID": "slides_TCh04.html#rival-explanations",
+    "href": "slides_TCh04.html#rival-explanations",
+    "title": "Chapter 4: Research Design",
+    "section": "Rival Explanations",
+    "text": "Rival Explanations\n\nHow can we distinguish correlation from causation?\nThis process inevitably requires us to consider rival explanations for an observed relationship:\n\nFor instance: if I find that social media use correlated with a lower likelihood of turning out to vote, I might ask whether age is a confounder that could explain this correlation."
+  },
+  {
+    "objectID": "slides_TCh04.html#confounding",
+    "href": "slides_TCh04.html#confounding",
+    "title": "Chapter 4: Research Design",
+    "section": "Confounding",
+    "text": "Confounding\nWhat I want to show is that Fox News viewership is cases a decreased chance of getting a Covid vaccine.\n\n\n\n\n\n\n\nmrdag\n\n\n\nX\n\nFox News\n\n\n\nY\n\nCovid Vaccine\n\n\n\nX-&gt;Y"
+  },
+  {
+    "objectID": "slides_TCh04.html#confounding-1",
+    "href": "slides_TCh04.html#confounding-1",
+    "title": "Chapter 4: Research Design",
+    "section": "Confounding",
+    "text": "Confounding\nThere’s a correlation, but I’m concerned this relationship is spurious because I know that things like existing political views are already correlated with media consumption, and those might explain any correlation I see here:\n\n\n\n\n\n\n\nmrdag\n\n\n\nZ\n\nConservatism\n\n\n\nX\n\nFox News\n\n\n\nZ-&gt;X\n\n\n\n\n\nY\n\nCovid Vaccine\n\n\n\nZ-&gt;Y\n\n\n\n\n\n\n\n\n\n\n\nIts possible that this difference in ideology accounts for the entire observed correlation between media habits and vaccines. I can’t really rule this possibility out without further investigation."
+  },
+  {
+    "objectID": "slides_TCh04.html#confounding-2",
+    "href": "slides_TCh04.html#confounding-2",
+    "title": "Chapter 4: Research Design",
+    "section": "Confounding",
+    "text": "Confounding\nWhat if I could randomly assign people to watch Fox News? Random assignment would ensure that nothing is correlated with Fox news viewership.\n\n\n\n\n\n\n\nmrdag\n\n\n\nZ\n\nConservatism\n\n\n\nY\n\nCovid Vaccine\n\n\n\nZ-&gt;Y\n\n\n\n\n\nX\n\nFox News\n\n\n\nX-&gt;Y\n\n\n\n\n\n\n\n\n\n\n\nIdeology may still matter for getting a vaccine, but since if conservatism is randomly distributed between social media users and non-users, it no longer confounds the observed relationship."
+  },
+  {
+    "objectID": "slides_TCh04.html#experiments-1",
+    "href": "slides_TCh04.html#experiments-1",
+    "title": "Chapter 4: Research Design",
+    "section": "Experiments",
+    "text": "Experiments\n\n\nExperiments are considered a “gold standard” because they can account for all kinds of confounding, including confounding caused by unobserved or unexpected relationships.\nHowever, they have two key limitations:\n\nExternal validity: results in the lab may not easily translate to results in real life.\nFeasibility: many interesting questions just can’t be randomly assigned. We can assign “democracy” or “war” or “religion” to people."
+  },
+  {
+    "objectID": "slides_TCh04.html#experiments-field-experiments",
+    "href": "slides_TCh04.html#experiments-field-experiments",
+    "title": "Chapter 4: Research Design",
+    "section": "Experiments: Field Experiments",
+    "text": "Experiments: Field Experiments\nField experiments can lessen the external validity problem by using random assignment in the field.\n\nFor instance, one common way to study GOTV messaging is to randomly select households to receive mailers:\n\n\n Civic duty treatment\n Hawthorne treatment\n\n Neighbors treatment  Self treatment\n\n\n\n\nFrom: GERBER, A. S., GREEN, D. P., & LARIMER, C. W. (2008). Social Pressure and Voter Turnout: Evidence from a Large-Scale Field Experiment. American Political Science Review, 102(1), 33–48. doi:10.1017/S000305540808009X"
+  },
+  {
+    "objectID": "slides_TCh04.html#experiments-field-experiments-1",
+    "href": "slides_TCh04.html#experiments-field-experiments-1",
+    "title": "Chapter 4: Research Design",
+    "section": "Experiments: Field Experiments",
+    "text": "Experiments: Field Experiments\n\nFrom: GERBER, A. S., GREEN, D. P., & LARIMER, C. W. (2008). Social Pressure and Voter Turnout: Evidence from a Large-Scale Field Experiment. American Political Science Review, 102(1), 33–48. doi:10.1017/S000305540808009X"
+  },
+  {
+    "objectID": "slides_TCh04.html#experiments-natural-experiments",
+    "href": "slides_TCh04.html#experiments-natural-experiments",
+    "title": "Chapter 4: Research Design",
+    "section": "Experiments: Natural Experiments",
+    "text": "Experiments: Natural Experiments\nField experiments can face fewer external validity problems, but some things still can’t be experimentally manipulated.\nNatural experiments use “quasi” randomization or “randomization by nature” where treatments are assigned more-or-less randomly."
+  },
+  {
+    "objectID": "slides_TCh04.html#experiments-natural-experiments-1",
+    "href": "slides_TCh04.html#experiments-natural-experiments-1",
+    "title": "Chapter 4: Research Design",
+    "section": "Experiments: Natural Experiments",
+    "text": "Experiments: Natural Experiments\n\n\n\nViewing Fox News isn’t random, but areas where Fox News is lower in the channel order will have more viewers.\nChannel order is essentially randomly assigned.\nSo, using channel order as a “treatment” assignment might theoretically allow us to account for confounding in an observational setting."
+  },
+  {
+    "objectID": "slides_TCh04.html#experiments-natural-experiments-2",
+    "href": "slides_TCh04.html#experiments-natural-experiments-2",
+    "title": "Chapter 4: Research Design",
+    "section": "Experiments: Natural Experiments",
+    "text": "Experiments: Natural Experiments\nOther sources of quasi randomization include:\n\n\nLotteries (like the Vietnam Draft, or the literal lottery)\nArbitrary cutoffs (barely winning an election vs. barely losing)\nNatural disasters and weather events\n\n\n\nStill, natural experiments require a mixture of creativity and luck. They’re not available for most questions."
+  },
+  {
+    "objectID": "slides_TCh04.html#observational-research-and-sampling",
+    "href": "slides_TCh04.html#observational-research-and-sampling",
+    "title": "Chapter 4: Research Design",
+    "section": "Observational Research and sampling",
+    "text": "Observational Research and sampling\n\n\nThis category includes qualitative methods, but we’re focusing mostly on quantitative (large-N) methods.\nIn quantitative studies of countries or states, we might not worry much about questions of “representativeness” because we can collect data on all of the countries or states.\nBut in quantitative research on people, its typically not feasible to study everyone. We’ll need to sample and then make generalizations."
+  },
+  {
+    "objectID": "slides_TCh04.html#observational-research-survey-vs.-census",
+    "href": "slides_TCh04.html#observational-research-survey-vs.-census",
+    "title": "Chapter 4: Research Design",
+    "section": "Observational Research: Survey vs. Census",
+    "text": "Observational Research: Survey vs. Census\n\nA true population census means studying everyone, or nearly everyone. This is rarely feasible except with a lot of resources!\nSurvey research aims to find a representative sample of the population and then make inferences about the population.\n\nRepresentativeness a central concern here. If our samples aren’t representative, then they can’t be generalized to the population.\nThe use of surveys introduces problems of statistical inference and uncertainty. There is a chance that a random sample will be biased (just like a coin can land on tails 5 times in a row), but that risk is quantifiable and it becomes extremely small when we have a lot of observations.\nI might not be able to tell you the exact % of the public approves of congress, but I can tell you the probability of being off by 20 percentage points in a 1,000 person survey."
+  },
+  {
+    "objectID": "slides_TCh04.html#the-1936-literary-digest-poll",
+    "href": "slides_TCh04.html#the-1936-literary-digest-poll",
+    "title": "Chapter 4: Research Design",
+    "section": "The 1936 Literary Digest Poll",
+    "text": "The 1936 Literary Digest Poll\n\n\n\n\nLiterary Digest wanted to predict the outcome of the 1936 presidential election.\nMailed out approx. 10 million “ballots” based on address data from social clubs, automobile registrations, phone books etc. about 2.4 million were returned.\n10 million much larger than the target for most polls\nA 24% response rate was low for the time, but higher than contemporary polls\nScientific polling was in its infancy, Literary Digest touted their lack of any fancy data manipulation as an advantage over polls that used more complex methodologies."
+  },
+  {
+    "objectID": "slides_TCh04.html#the-1936-literary-digest-poll-1",
+    "href": "slides_TCh04.html#the-1936-literary-digest-poll-1",
+    "title": "Chapter 4: Research Design",
+    "section": "The 1936 Literary Digest poll",
+    "text": "The 1936 Literary Digest poll\n\n\n\n\n\nPrediction for Landon\nPrediction for Roosevelt\n\n\n54% of the popular vote\n41% of the popular vote"
+  },
+  {
+    "objectID": "slides_TCh04.html#the-1936-literary-digest-poll-2",
+    "href": "slides_TCh04.html#the-1936-literary-digest-poll-2",
+    "title": "Chapter 4: Research Design",
+    "section": "The 1936 Literary Digest poll",
+    "text": "The 1936 Literary Digest poll\n\n\n\n\n\n\n\n\nNot quite!"
+  },
+  {
+    "objectID": "slides_TCh04.html#the-1936-literary-digest-poll-3",
+    "href": "slides_TCh04.html#the-1936-literary-digest-poll-3",
+    "title": "Chapter 4: Research Design",
+    "section": "The 1936 Literary Digest poll",
+    "text": "The 1936 Literary Digest poll\n\n\n\n\nContemporaneous analyses attributed the error to sampling bias: Literary Digest targeted car owners and telephone owners, and so the results skewed toward the wealthy\nSubsequent reanalyses point to non-response bias: Roosevelt supporters were systematically less likely to return the postcard compared to Landon supporters.\n\nAnecdotal evidence suggests that this may have been the result of different levels of enthusiasm: Landon voters really didn’t like Roosevelt and they were motivated to talk about it.\nSample size doesn’t fix bias! Much smaller random polls can easily outperform a large-yet-biased one.\n\n\n\n\n\n\n\nLusinchi D. “President” Landon and the 1936 Literary Digest Poll: Were Automobile and Telephone Owners to Blame? Social Science History. 2012;36(1):23-54. doi:10.1017/S014555320001035X"
+  },
+  {
+    "objectID": "slides_TCh04.html#sampling-strategies",
+    "href": "slides_TCh04.html#sampling-strategies",
+    "title": "Chapter 4: Research Design",
+    "section": "Sampling strategies",
+    "text": "Sampling strategies\nA note that’s still relevant today: non-response bias is a big risk! Some people are more likely to take polls."
+  },
+  {
+    "objectID": "slides_TCh04.html#sampling-strategies-1",
+    "href": "slides_TCh04.html#sampling-strategies-1",
+    "title": "Chapter 4: Research Design",
+    "section": "Sampling strategies",
+    "text": "Sampling strategies\nContemporary polls often get stuff wrong, but many general election pollsters are able to get a lot closer with far fewer observations (even as conditions get worse!) How?\n\n\n\n\n\nSource: fivethirtyeight.com"
+  },
+  {
+    "objectID": "tips.html",
+    "href": "tips.html",
+    "title": "tips",
+    "section": "",
+    "text": "(I’ll be adding stuff to this section as I encounter it)\n\n\nYou’ll typically use a weighting variable when you’re working with survey data. In this course, the nes data set will include a weight variable (wt), but there aren’t any weights for the world or states data sets.\nWeighting is used to make samples more closely resemble a target population. For instance, the NES has slightly more women respondents than you would expect from a true random sample from the general population so including the weighting variable makes the responses from men count more and the responses from women count slightly less.\n\n\n\n\n\n\ngender\nunweighted\nweighted\n\n\n\n\n1. Male\n3763 (46%)\n3964 (48%)\n\n\n2. Female\n4450 (54%)\n4262 (52%)\n\n\n\n\n\n\n\n\nThis concern isn’t really relevant for the world and states data sets because these aren’t samples: the states data set has data on the entire population of U.S. states, and the world data set has data on (more or less) all the countries.\n\n\n\nThey svyglm function is used to run a weighted regression, but the final project data doesn’t have any weights associated with it, so you don’t need any of the svy commands to do your analysis. Keep in mind, however, that these data are still not representative of the general population, so you should acknowledge that this is a non-random sample when you discuss your results.\n\n\n\nYou are not obligated to find statistically significant results. As long as you make a reasonable argument for why your hypothesis is worth testing, this is completely fine. If you do find that your hypothesis isn’t supported, you still need to interpret the coefficients, plot the results etc. you just need to say that you’ve failed to reject the null. In the concluding section of the paper, you would also want to talk about why you think your hypothesis wasn’t supported. A few plausible reasons are: you’re wrong, there’s not enough data, there’s uncontrolled confounding, or the sample is biased. You don’t need to give a definitive explanation, just show you’re thinking about your results and that you understand what it means to reject or not reject the null hypothesis.\n(If you think there’s uncontrolled confounding and it comes from a variable that already exists in the data, you might as well test it! But its entirely possible that there’s some other confounding variable that wasn’t included in the data, in which case its fine to say “I suspect this matters, but I can’t test it”)\n\n\n\nBefore submitting your R-code, its a good idea to double-check and make sure everything runs properly. The best way to do this is: restart R, press little broom icon in the environment pane to make sure you’ve cleared all of the your data out, and then run your script one line at a time and make sure that you don’t see any errors. If you’re not able to reproduce the results in your paper, then you may need to check to make sure you have everything in the right order.\n\n\n\nThe $ notation is one way that we can access a specific column of a dataframe in R. For instance, here’s a portion of the states data set:\n\n\n\n\nstateattend.pctabortlaws\n\nAlabama528\n\nAlaska228\n\nArizona2911\n\nArkansas5010\n\nCalifornia335\n\n\n\n\nIf I want to access the attend.pct variable, I can just type:\n\nstates$attend.pct\n\nTyping out a data set name and a dollar sign can get a little tedious, so many R functions will allow you to use an optional data argument that will allow you to be a little more concise. So these two commands will generate the exact same result, the only difference is that adding data=states saves me from having to write states$... over and over:\n\n# with the data = argument\ncompmeansC(dv = attend.pct, iv = region, data=states)\n\n===========================================================================\n                         Mean Comparison Analysis\n===========================================================================\n\n\nTable: Mean Values of attend.pct by region\n\n              Mean    N   St. Dev.\n----------  ------  ---  ---------\nNortheast    29.56    9       5.77\nMidwest      40.83   12       4.39\nSouth        46.88   16       7.16\nWest         33.92   13       8.59\nTotal        38.94   50       9.37\n\n\n\n\n\n\n\n\n# without the data = argument\ncompmeansC(dv= states$attend.pct, iv = states$region)\n\n===========================================================================\n                         Mean Comparison Analysis\n===========================================================================\n\n\nTable: Mean Values of states$attend.pct by states$region\n\n              Mean    N   St. Dev.\n----------  ------  ---  ---------\nNortheast    29.56    9       5.77\nMidwest      40.83   12       4.39\nSouth        46.88   16       7.16\nWest         33.92   13       8.59\nTotal        38.94   50       9.37\n\n\n\n\n\n\n\n\n\n\n\n\nna.rm=T is an optional command that will allow us to calculate summary statistics for data that has missing values. When an observation has some missing values, R will use a special NA value as a placeholder for that cell. This is a problem when we want to calculate a summary statistic because NA doesn’t have any mathematical meaning: its just non-existent data.\nBy default, taking the mean, median, sum etc. from a vector with any NA values will just return NA:\n\nmean(world$gdp.growth)\n\n[1] NA\n\n\nSo, adding na.rm=T will just tell R to ignore any NA values and perform the calculation only on the valid observations:\n\nmean(world$gdp.growth, na.rm=T)\n\n[1] 2.982785"
+  },
+  {
+    "objectID": "tips.html#when-do-i-need-to-use-weights",
+    "href": "tips.html#when-do-i-need-to-use-weights",
+    "title": "tips",
+    "section": "",
+    "text": "You’ll typically use a weighting variable when you’re working with survey data. In this course, the nes data set will include a weight variable (wt), but there aren’t any weights for the world or states data sets.\nWeighting is used to make samples more closely resemble a target population. For instance, the NES has slightly more women respondents than you would expect from a true random sample from the general population so including the weighting variable makes the responses from men count more and the responses from women count slightly less.\n\n\n\n\n\n\ngender\nunweighted\nweighted\n\n\n\n\n1. Male\n3763 (46%)\n3964 (48%)\n\n\n2. Female\n4450 (54%)\n4262 (52%)\n\n\n\n\n\n\n\n\nThis concern isn’t really relevant for the world and states data sets because these aren’t samples: the states data set has data on the entire population of U.S. states, and the world data set has data on (more or less) all the countries."
+  },
+  {
+    "objectID": "tips.html#do-i-need-to-use-svyglm",
+    "href": "tips.html#do-i-need-to-use-svyglm",
+    "title": "tips",
+    "section": "",
+    "text": "They svyglm function is used to run a weighted regression, but the final project data doesn’t have any weights associated with it, so you don’t need any of the svy commands to do your analysis. Keep in mind, however, that these data are still not representative of the general population, so you should acknowledge that this is a non-random sample when you discuss your results."
+  },
+  {
+    "objectID": "tips.html#is-it-okay-if-my-results-are-not-significant",
+    "href": "tips.html#is-it-okay-if-my-results-are-not-significant",
+    "title": "tips",
+    "section": "",
+    "text": "You are not obligated to find statistically significant results. As long as you make a reasonable argument for why your hypothesis is worth testing, this is completely fine. If you do find that your hypothesis isn’t supported, you still need to interpret the coefficients, plot the results etc. you just need to say that you’ve failed to reject the null. In the concluding section of the paper, you would also want to talk about why you think your hypothesis wasn’t supported. A few plausible reasons are: you’re wrong, there’s not enough data, there’s uncontrolled confounding, or the sample is biased. You don’t need to give a definitive explanation, just show you’re thinking about your results and that you understand what it means to reject or not reject the null hypothesis.\n(If you think there’s uncontrolled confounding and it comes from a variable that already exists in the data, you might as well test it! But its entirely possible that there’s some other confounding variable that wasn’t included in the data, in which case its fine to say “I suspect this matters, but I can’t test it”)"
+  },
+  {
+    "objectID": "tips.html#how-can-i-make-sure-that-my-code-is-replicable",
+    "href": "tips.html#how-can-i-make-sure-that-my-code-is-replicable",
+    "title": "tips",
+    "section": "",
+    "text": "Before submitting your R-code, its a good idea to double-check and make sure everything runs properly. The best way to do this is: restart R, press little broom icon in the environment pane to make sure you’ve cleared all of the your data out, and then run your script one line at a time and make sure that you don’t see any errors. If you’re not able to reproduce the results in your paper, then you may need to check to make sure you have everything in the right order."
+  },
+  {
+    "objectID": "tips.html#what-does-the-symbol-mean-as-inworldccode",
+    "href": "tips.html#what-does-the-symbol-mean-as-inworldccode",
+    "title": "tips",
+    "section": "",
+    "text": "The $ notation is one way that we can access a specific column of a dataframe in R. For instance, here’s a portion of the states data set:\n\n\n\n\nstateattend.pctabortlaws\n\nAlabama528\n\nAlaska228\n\nArizona2911\n\nArkansas5010\n\nCalifornia335\n\n\n\n\nIf I want to access the attend.pct variable, I can just type:\n\nstates$attend.pct\n\nTyping out a data set name and a dollar sign can get a little tedious, so many R functions will allow you to use an optional data argument that will allow you to be a little more concise. So these two commands will generate the exact same result, the only difference is that adding data=states saves me from having to write states$... over and over:\n\n# with the data = argument\ncompmeansC(dv = attend.pct, iv = region, data=states)\n\n===========================================================================\n                         Mean Comparison Analysis\n===========================================================================\n\n\nTable: Mean Values of attend.pct by region\n\n              Mean    N   St. Dev.\n----------  ------  ---  ---------\nNortheast    29.56    9       5.77\nMidwest      40.83   12       4.39\nSouth        46.88   16       7.16\nWest         33.92   13       8.59\nTotal        38.94   50       9.37\n\n\n\n\n\n\n\n\n# without the data = argument\ncompmeansC(dv= states$attend.pct, iv = states$region)\n\n===========================================================================\n                         Mean Comparison Analysis\n===========================================================================\n\n\nTable: Mean Values of states$attend.pct by states$region\n\n              Mean    N   St. Dev.\n----------  ------  ---  ---------\nNortheast    29.56    9       5.77\nMidwest      40.83   12       4.39\nSouth        46.88   16       7.16\nWest         33.92   13       8.59\nTotal        38.94   50       9.37"
+  },
+  {
+    "objectID": "tips.html#what-does-na.rmt-mean",
+    "href": "tips.html#what-does-na.rmt-mean",
+    "title": "tips",
+    "section": "",
+    "text": "na.rm=T is an optional command that will allow us to calculate summary statistics for data that has missing values. When an observation has some missing values, R will use a special NA value as a placeholder for that cell. This is a problem when we want to calculate a summary statistic because NA doesn’t have any mathematical meaning: its just non-existent data.\nBy default, taking the mean, median, sum etc. from a vector with any NA values will just return NA:\n\nmean(world$gdp.growth)\n\n[1] NA\n\n\nSo, adding na.rm=T will just tell R to ignore any NA values and perform the calculation only on the valid observations:\n\nmean(world$gdp.growth, na.rm=T)\n\n[1] 2.982785"
+  },
+  {
+    "objectID": "slides_TCh05.html#identifying-the-pattern",
+    "href": "slides_TCh05.html#identifying-the-pattern",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "Identifying the pattern",
+    "text": "Identifying the pattern\nTo characterize the pattern after control, you can ask yourself a series of questions."
+  },
+  {
+    "objectID": "slides_TCh05.html#mean-comparison-table",
+    "href": "slides_TCh05.html#mean-comparison-table",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "Mean comparison table",
+    "text": "Mean comparison table"
+  },
+  {
+    "objectID": "slides_TCh05.html#using-a-cross-tab",
+    "href": "slides_TCh05.html#using-a-cross-tab",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "Using a cross-tab",
+    "text": "Using a cross-tab"
+  },
+  {
+    "objectID": "slides_TCh05.html#what-about-interval-level-relationships",
+    "href": "slides_TCh05.html#what-about-interval-level-relationships",
+    "title": "Chapter 5: Controlled comparisons",
+    "section": "What about interval level relationships?",
+    "text": "What about interval level relationships?\n\nYou can collapse interval data into categories and then use a mean comparison\nMore often, we’ll use regression analysis:\n\nIn essence, we’ll draw a “line of best fit” through the values of X and Y"
   }
 ]
