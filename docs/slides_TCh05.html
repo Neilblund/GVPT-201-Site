@@ -3146,6 +3146,64 @@ Republicans
 </div>
 </section>
 
+<section id="nominal-relationships" class="title-slide slide level2 center">
+<h2>Nominal Relationships</h2>
+<ul>
+<li>For data that are nominal, it may not make sense to talk about the “direction”, but your book suggests using treating the left-most category as the baseline group and then comparing based on that.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<table class="lightable-classic" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>% unionization</caption>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">iv</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">South</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Northeast</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Midwest</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">West</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Biden 20</td>
+<td style="text-align: left;">7.6<br>
+(4)</td>
+<td style="text-align: left;">14.4<br>
+(9)</td>
+<td style="text-align: left;">12.8<br>
+(4)</td>
+<td style="text-align: left;">12.4<br>
+(8)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Trump 20</td>
+<td style="text-align: left;">5.9<br>
+(12)</td>
+<td style="text-align: left;">0<br>
+(0)</td>
+<td style="text-align: left;">8.5<br>
+(8)</td>
+<td style="text-align: left;">9.5<br>
+(5)</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</div>
+</section>
+
 <section id="when-to-use-what" class="title-slide slide level2 center">
 <h2>When to use what</h2>
 <div>
@@ -3222,23 +3280,21 @@ Republicans
 <span id="cb1-5"><a></a></span>
 <span id="cb1-6"><a></a><span class="co"># read RDS reads the data from the URL into R:</span></span>
 <span id="cb1-7"><a></a>pilot<span class="ot">&lt;-</span><span class="fu">readRDS</span>(loc)</span>
-<span id="cb1-8"><a></a>pilot<span class="sc">$</span>apple<span class="ot">&lt;-</span><span class="fu">factor</span>(pilot<span class="sc">$</span>apple, <span class="at">levels=</span><span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;Not an Apple user&quot;</span>, <span class="st">&quot;Apple user&quot;</span>))</span>
+<span id="cb1-8"><a></a></span>
 <span id="cb1-9"><a></a></span>
-<span id="cb1-10"><a></a><span class="co"># create factor variable for being over 18</span></span>
-<span id="cb1-11"><a></a>pilot<span class="sc">$</span>over18 <span class="ot">&lt;-</span><span class="fu">factor</span>(pilot<span class="sc">$</span>Q6<span class="sc">&gt;</span><span class="dv">18</span>, <span class="at">levels=</span><span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&#39;18 or under&#39;</span>, <span class="st">&#39;&gt;18&#39;</span>))</span>
+<span id="cb1-10"><a></a><span class="co"># get the effect of being an apple user on voter turnout in 2024</span></span>
+<span id="cb1-11"><a></a><span class="fu">crosstabC</span>(<span class="at">dv =</span> Q14, <span class="at">iv=</span>apple  ,<span class="at">data=</span>pilot, <span class="at">plot.response=</span><span class="st">&#39;Yes&#39;</span>)</span>
 <span id="cb1-12"><a></a></span>
-<span id="cb1-13"><a></a><span class="co"># create a factor variable for being an apple user</span></span>
-<span id="cb1-14"><a></a></span>
-<span id="cb1-15"><a></a><span class="co"># get the effect of being an apple user on voter turnout in 2024</span></span>
-<span id="cb1-16"><a></a><span class="fu">crosstabC</span>(<span class="at">dv =</span> Q14, <span class="at">iv=</span>appleuser  ,<span class="at">data=</span>pilot, <span class="at">plot.response=</span><span class="st">&#39;Yes&#39;</span>)</span>
-<span id="cb1-17"><a></a></span>
-<span id="cb1-18"><a></a><span class="co"># get the effect of being an apple user on voter turnout in 2024 controlling for age&gt;18</span></span>
-<span id="cb1-19"><a></a><span class="fu">crosstabC</span>(<span class="at">dv =</span> Q14, <span class="at">iv=</span>appleuser, <span class="at">z=</span>over18,<span class="at">data=</span>pilot, <span class="at">plot.response=</span><span class="st">&quot;Yes&quot;</span>)</span>
-<span id="cb1-20"><a></a></span>
+<span id="cb1-13"><a></a><span class="co"># create factor variable for being over 18 so we can use this as a control</span></span>
+<span id="cb1-14"><a></a>pilot<span class="sc">$</span>over18 <span class="ot">&lt;-</span><span class="fu">factor</span>(pilot<span class="sc">$</span>Q6<span class="sc">&gt;</span><span class="dv">18</span>, <span class="at">levels=</span><span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&#39;18 or under&#39;</span>, <span class="st">&#39;&gt;18&#39;</span>))</span>
+<span id="cb1-15"><a></a></span>
+<span id="cb1-16"><a></a><span class="co"># get the effect of being an apple user on voter turnout in 2024 controlling for age&gt;18</span></span>
+<span id="cb1-17"><a></a><span class="fu">crosstabC</span>(<span class="at">dv =</span> Q14, <span class="at">iv=</span>apple, <span class="at">z=</span>over18,<span class="at">data=</span>pilot, <span class="at">plot.response=</span><span class="st">&quot;Yes&quot;</span>)</span>
+<span id="cb1-18"><a></a></span>
+<span id="cb1-19"><a></a></span>
+<span id="cb1-20"><a></a><span class="co"># get the average support for allowing a president to run for a third term by apple user and &gt;18</span></span>
 <span id="cb1-21"><a></a></span>
-<span id="cb1-22"><a></a><span class="co"># get the average support for allowing a president to run for a third term by apple user and &gt;18</span></span>
-<span id="cb1-23"><a></a></span>
-<span id="cb1-24"><a></a><span class="fu">compmeansC</span>(<span class="at">dv =</span> Q34_2, <span class="at">iv =</span> appleuser, <span class="at">z=</span> over18, <span class="at">data=</span>pilot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-22"><a></a><span class="fu">compmeansC</span>(<span class="at">dv =</span> Q34_2, <span class="at">iv =</span> apple, <span class="at">z=</span> over18, <span class="at">data=</span>pilot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <div class="quarto-auto-generated-content">
