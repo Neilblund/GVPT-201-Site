@@ -5018,16 +5018,6 @@ border: 0;
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#when-do-i-need-to-use-weights" id="toc-when-do-i-need-to-use-weights" class="nav-link active" data-scroll-target="#when-do-i-need-to-use-weights">When do I need to use weights?</a></li>
-  <li><a href="#what-does-the-symbol-mean-as-in-worldccode" id="toc-what-does-the-symbol-mean-as-in-worldccode" class="nav-link" data-scroll-target="#what-does-the-symbol-mean-as-in-worldccode">What does the <code>$</code> symbol mean (as in <code>world$ccode</code>)?</a></li>
-  <li><a href="#why-am-i-getting-error-object-__-not-found" id="toc-why-am-i-getting-error-object-__-not-found" class="nav-link" data-scroll-target="#why-am-i-getting-error-object-__-not-found">Why am I getting Error: object __ not found?</a></li>
-  <li><a href="#what-are-factor-variables" id="toc-what-are-factor-variables" class="nav-link" data-scroll-target="#what-are-factor-variables">What are factor variables?</a></li>
-  </ul>
-</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -5050,8 +5040,26 @@ border: 0;
 
 </header>
 
-
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#how-do-i-access-the-help-file-for-a-function" id="toc-how-do-i-access-the-help-file-for-a-function">How do I access the help file for a function?</a></li>
+  <li><a href="#when-do-i-need-to-use-weights" id="toc-when-do-i-need-to-use-weights">When do I need to use weights?</a></li>
+  <li><a href="#what-does-the-symbol-mean-as-in-worldccode" id="toc-what-does-the-symbol-mean-as-in-worldccode">What does the <code>$</code> symbol mean (as in <code>world$ccode</code>)?</a></li>
+  <li><a href="#why-am-i-getting-error-object-__-not-found" id="toc-why-am-i-getting-error-object-__-not-found">Why am I getting Error: object __ not found?</a></li>
+  <li><a href="#what-are-factor-variables" id="toc-what-are-factor-variables">What are factor variables?</a></li>
+  </ul>
+</nav>
 <p>This is a running list of questions (primarily R-related) that have come up a lot over the semester. If you’re here, you might also want to check out the page <a href="./troubleshooting.html">on basic troubleshooting in R</a>.</p>
+<section id="how-do-i-access-the-help-file-for-a-function" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-i-access-the-help-file-for-a-function">How do I access the help file for a function?</h2>
+<p>You can access the help file for a function by typing <code>help(function name)</code> into the console:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(c) <span class="co"># get the help file for the &quot;c&quot; function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If the function is associated with the <code>RCPA3</code> package, it should have some reasonably detailed information about how each function works, but it will also have links to some short YouTube videos that illustrate how to use them, so consider giving those a watch if you’re stuck.</p>
+</section>
 <section id="when-do-i-need-to-use-weights" class="level2">
 <h2 class="anchored" data-anchor-id="when-do-i-need-to-use-weights">When do I need to use weights?</h2>
 <p>You’ll typically use a weighting variable when you’re working with survey data. In this course, the <code>nes</code> data set will include a weight variable (<code>wt</code>), but there aren’t any weights for the <code>world</code> or <code>states</code> data sets.</p>
@@ -5111,7 +5119,7 @@ border: 0;
 </div>
 <p>If I want to access the <code>attend.pct</code> variable, I can just type:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>states<span class="sc">$</span>attend.pct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>states<span class="sc">$</span>attend.pct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 52 22 29 50 33 29 30 35 35 45 35 45 39 44 40 48 47 53 23 37 30 38 38 60 43
 [26] 31 47 30 23 36 34 32 49 42 36 50 32 39 30 54 42 52 47 57 23 41 33 43 33 31
@@ -5121,11 +5129,11 @@ attr(,&quot;label&quot;)
 </div>
 <p>Typing out a data set name and a dollar sign can get a little tedious, so many R functions will allow you to use an optional <code>data</code> argument that will allow you to be a little more concise. So these two commands will generate the exact same result, the only difference is that adding <code>data=states</code> saves me from having to write <code>states$...</code> over and over:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># with the data = argument</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">compmeansC</span>(<span class="at">dv =</span> attend.pct, <span class="at">iv =</span> region, <span class="at">data=</span>states)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># without the data = argument</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">compmeansC</span>(<span class="at">dv=</span> states<span class="sc">$</span>attend.pct, <span class="at">iv =</span> states<span class="sc">$</span>region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># with the data = argument</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">compmeansC</span>(<span class="at">dv =</span> attend.pct, <span class="at">iv =</span> region, <span class="at">data=</span>states)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># without the data = argument</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">compmeansC</span>(<span class="at">dv=</span> states<span class="sc">$</span>attend.pct, <span class="at">iv =</span> states<span class="sc">$</span>region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="why-am-i-getting-error-object-__-not-found" class="level2">
@@ -5138,30 +5146,30 @@ attr(,&quot;label&quot;)
 </ul>
 <p>When you reference a variable in R, it searches for that variable in the current environment, and it returns an error message when it can’t find it. So the code below returns and error because <code>x</code> hasn’t been defined yet:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error: object &#39;x&#39; not found</code></pre>
 </div>
 </div>
 <p>To access <code>x</code>I first need to create it by assigning a value (in this case, some text in quotation marks) to that name. This works just fine:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="st">&quot;I am a variable&quot;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="st">&quot;I am a variable&quot;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;I am a variable&quot;</code></pre>
 </div>
 </div>
 <p>The other place this comes up is when you try to access a column from a data set without specifying the data set where that variable exists. For instance, “age” is a column in the <code>nes</code> data, but just typing “age” doesn’t work because R doesn’t know where to look:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(age, <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(age, <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error: object &#39;age&#39; not found</code></pre>
 </div>
 </div>
 <p>Using the <code>dataset$varname</code> syntax solves this problem:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(nes<span class="sc">$</span>age, <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(nes<span class="sc">$</span>age, <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 51.58522</code></pre>
 </div>
@@ -5169,52 +5177,48 @@ attr(,&quot;label&quot;)
 </section>
 <section id="what-are-factor-variables" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-factor-variables">What are factor variables?</h2>
-<p>A factor variable is R’s default data type for storing categorical data. Technically, a factor is actually just a bunch of integers with a special attribute that specifies the labels that those integers correspond to:</p>
+<p>A factor variable is R’s default data type for storing categorical data. Technically, a factor is actually just a bunch of integers with a special <code>levels</code> attribute that specifies the labels that those integers correspond to:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>example_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;C&#39;</span>, <span class="st">&#39;D&#39;</span>))</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>example_factor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>example_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;C&#39;</span>, <span class="st">&#39;D&#39;</span>))</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>example_factor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] A A B B C D
 Levels: A B C D</code></pre>
 </div>
 </div>
 <p>R can also just store text, but factors have some distinct advantages. The most important is that we can easily control the ordering of a table or graph.</p>
-<p>If I make a barplot from a variable that just contains text, R will try to list out the levels in alphabetical order:</p>
+<p>If I just have a regular character variable, R will try to list out the levels in alphabetical order:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>string_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Strongly disagree&quot;</span>, <span class="st">&quot;Disgree&quot;</span>, <span class="st">&quot;Neither disagree nor agree&quot;</span>, <span class="st">&quot;Agree&quot;</span>, <span class="st">&quot;Strongly Agree&quot;</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(string_vector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>string_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Disagree&quot;</span>, <span class="st">&quot;Neither disagree nor agree&quot;</span>, <span class="st">&quot;Agree&quot;</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(string_vector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>string_vector
-                     Agree                    Disgree 
+                     Agree                   Disagree 
                          1                          1 
-Neither disagree nor agree             Strongly Agree 
-                         1                          1 
-         Strongly disagree 
+Neither disagree nor agree 
                          1 </code></pre>
 </div>
 </div>
-<p>But alphabetizing this vector doesn’t make sense. It has a clear ordering from strongly disagree to strongly agree, and the “levels” attribute allows me to preserve that ordering:</p>
+<p>But alphabetizing this doesn’t make sense because it has a clear ordering from disagree to agree. The “levels” attribute allows me to preserve that ordering:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>factor_vector <span class="ot">&lt;-</span> <span class="fu">factor</span>(string_vector, </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># list of the levels the order I want them to appear: </span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Strongly disagree&quot;</span>, <span class="st">&quot;Disgree&quot;</span>, <span class="st">&quot;Neither disagree nor agree&quot;</span>, <span class="st">&quot;Agree&quot;</span>, <span class="st">&quot;Strongly Agree&quot;</span>))</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(factor_vector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>factor_vector <span class="ot">&lt;-</span> <span class="fu">factor</span>(string_vector, </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># list of the levels the order I want them to appear: </span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">levels =</span><span class="fu">c</span>(<span class="st">&quot;Disagree&quot;</span>, <span class="st">&quot;Neither disagree nor agree&quot;</span>, <span class="st">&quot;Agree&quot;</span>))</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(factor_vector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>factor_vector
-         Strongly disagree                    Disgree 
+                  Disagree Neither disagree nor agree 
                          1                          1 
-Neither disagree nor agree                      Agree 
-                         1                          1 
-            Strongly Agree 
+                     Agree 
                          1 </code></pre>
 </div>
 </div>
 <p>This also means we can easily convert a factor variable to numeric so we can do things like calculate the median value of an ordered variable:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(<span class="fu">as.numeric</span>(factor_vector))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(<span class="fu">as.numeric</span>(factor_vector))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
 </div>
 

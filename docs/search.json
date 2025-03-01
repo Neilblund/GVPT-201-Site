@@ -610,7 +610,7 @@
     "href": "faqs.html#what-are-factor-variables",
     "title": "FAQs",
     "section": "What are factor variables?",
-    "text": "What are factor variables?\nA factor variable is R’s default data type for storing categorical data. Technically, a factor is actually just a bunch of integers with a special attribute that specifies the labels that those integers correspond to:\n\nexample_factor &lt;- factor(c(1,1,2,2,3,4), labels = c('A', 'B', 'C', 'D'))\nexample_factor\n\n[1] A A B B C D\nLevels: A B C D\n\n\nR can also just store text, but factors have some distinct advantages. The most important is that we can easily control the ordering of a table or graph.\nIf I make a barplot from a variable that just contains text, R will try to list out the levels in alphabetical order:\n\nstring_vector &lt;- c(\"Strongly disagree\", \"Disgree\", \"Neither disagree nor agree\", \"Agree\", \"Strongly Agree\")\ntable(string_vector)\n\nstring_vector\n                     Agree                    Disgree \n                         1                          1 \nNeither disagree nor agree             Strongly Agree \n                         1                          1 \n         Strongly disagree \n                         1 \n\n\nBut alphabetizing this vector doesn’t make sense. It has a clear ordering from strongly disagree to strongly agree, and the “levels” attribute allows me to preserve that ordering:\n\nfactor_vector &lt;- factor(string_vector, \n                        # list of the levels the order I want them to appear: \n                        levels = c(\"Strongly disagree\", \"Disgree\", \"Neither disagree nor agree\", \"Agree\", \"Strongly Agree\"))\n\ntable(factor_vector)\n\nfactor_vector\n         Strongly disagree                    Disgree \n                         1                          1 \nNeither disagree nor agree                      Agree \n                         1                          1 \n            Strongly Agree \n                         1 \n\n\nThis also means we can easily convert a factor variable to numeric so we can do things like calculate the median value of an ordered variable:\n\nmedian(as.numeric(factor_vector))\n\n[1] 3",
+    "text": "What are factor variables?\nA factor variable is R’s default data type for storing categorical data. Technically, a factor is actually just a bunch of integers with a special levels attribute that specifies the labels that those integers correspond to:\n\nexample_factor &lt;- factor(c(1,1,2,2,3,4), labels = c('A', 'B', 'C', 'D'))\nexample_factor\n\n[1] A A B B C D\nLevels: A B C D\n\n\nR can also just store text, but factors have some distinct advantages. The most important is that we can easily control the ordering of a table or graph.\nIf I just have a regular character variable, R will try to list out the levels in alphabetical order:\n\nstring_vector &lt;- c(\"Disagree\", \"Neither disagree nor agree\", \"Agree\")\ntable(string_vector)\n\nstring_vector\n                     Agree                   Disagree \n                         1                          1 \nNeither disagree nor agree \n                         1 \n\n\nBut alphabetizing this doesn’t make sense because it has a clear ordering from disagree to agree. The “levels” attribute allows me to preserve that ordering:\n\nfactor_vector &lt;- factor(string_vector, \n                        # list of the levels the order I want them to appear: \n                        levels =c(\"Disagree\", \"Neither disagree nor agree\", \"Agree\"))\n\ntable(factor_vector)\n\nfactor_vector\n                  Disagree Neither disagree nor agree \n                         1                          1 \n                     Agree \n                         1 \n\n\nThis also means we can easily convert a factor variable to numeric so we can do things like calculate the median value of an ordered variable:\n\nmedian(as.numeric(factor_vector))\n\n[1] 2",
     "crumbs": [
       "FAQs"
     ]
@@ -1202,5 +1202,25 @@
     "title": "tips",
     "section": "",
     "text": "na.rm=T is an optional command that will allow us to calculate summary statistics for data that has missing values. When an observation has some missing values, R will use a special NA value as a placeholder for that cell. This is a problem when we want to calculate a summary statistic because NA doesn’t have any mathematical meaning: its just non-existent data.\nBy default, taking the mean, median, sum etc. from a vector with any NA values will just return NA:\n\nmean(world$gdp.growth)\n\n[1] NA\n\n\nSo, adding na.rm=T will just tell R to ignore any NA values and perform the calculation only on the valid observations:\n\nmean(world$gdp.growth, na.rm=T)\n\n[1] 2.982785"
+  },
+  {
+    "objectID": "faqs.html#how-do-i-access-help-for-a-function",
+    "href": "faqs.html#how-do-i-access-help-for-a-function",
+    "title": "FAQs",
+    "section": "How do I access help for a function?",
+    "text": "How do I access help for a function?\nYou can access the help file for a function by typing help(function name) into the console:\n\nhelp(c) # get the help file for the \"c\" function\n\nIf the function is associated with the RCPA3 package, it should have some reasonably detailed information about how each function works, but it will also have links to some short YouTube videos that illustrate how to use them, so consider giving those a watch if you’re stuck.",
+    "crumbs": [
+      "FAQs"
+    ]
+  },
+  {
+    "objectID": "faqs.html#how-do-i-access-the-help-file-for-a-function",
+    "href": "faqs.html#how-do-i-access-the-help-file-for-a-function",
+    "title": "FAQs",
+    "section": "How do I access the help file for a function?",
+    "text": "How do I access the help file for a function?\nYou can access the help file for a function by typing help(function name) into the console:\n\nhelp(c) # get the help file for the \"c\" function\n\nIf the function is associated with the RCPA3 package, it should have some reasonably detailed information about how each function works, but it will also have links to some short YouTube videos that illustrate how to use them, so consider giving those a watch if you’re stuck.",
+    "crumbs": [
+      "FAQs"
+    ]
   }
 ]
