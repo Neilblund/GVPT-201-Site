@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>GVPT 201 Spring 2025 - Pilot import and analyses</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./surveys.html">Class surveys</a></li><li class="breadcrumb-item"><a href="./pilot_analysis.html">Pilot import and analyses</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">GVPT 201 Spring 2025</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./surveys.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Class surveys</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pilot_codebook.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pilot codebook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pilot_analysis.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Pilot import and analyses</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./faqs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FAQs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./troubleshooting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Troubleshooting R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./links.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Links</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#importing-the-data" id="toc-importing-the-data" class="nav-link active" data-scroll-target="#importing-the-data">Importing the data</a>
+  <ul class="collapse">
+  <li><a href="#applying-a-new-variable-label" id="toc-applying-a-new-variable-label" class="nav-link" data-scroll-target="#applying-a-new-variable-label">Applying a new variable label</a></li>
+  </ul></li>
+  <li><a href="#recoding-variables" id="toc-recoding-variables" class="nav-link" data-scroll-target="#recoding-variables">Recoding Variables</a>
+  <ul class="collapse">
+  <li><a href="#dropping-levels" id="toc-dropping-levels" class="nav-link" data-scroll-target="#dropping-levels">Dropping levels</a></li>
+  <li><a href="#combining-levels" id="toc-combining-levels" class="nav-link" data-scroll-target="#combining-levels">Combining levels</a></li>
+  <li><a href="#splitting-a-numeric-variable" id="toc-splitting-a-numeric-variable" class="nav-link" data-scroll-target="#splitting-a-numeric-variable">Splitting a numeric variable</a></li>
+  <li><a href="#making-a-dummy" id="toc-making-a-dummy" class="nav-link" data-scroll-target="#making-a-dummy">Making a dummy</a></li>
+  <li><a href="#combining-variables" id="toc-combining-variables" class="nav-link" data-scroll-target="#combining-variables">Combining Variables</a>
+  <ul class="collapse">
+  <li><a href="#example-1-condition-based-on-multiple-variables" id="toc-example-1-condition-based-on-multiple-variables" class="nav-link" data-scroll-target="#example-1-condition-based-on-multiple-variables">Example 1: Condition based on multiple variables</a></li>
+  <li><a href="#example-2-additive-index" id="toc-example-2-additive-index" class="nav-link" data-scroll-target="#example-2-additive-index">Example 2: Additive index</a></li>
+  <li><a href="#example-3-averaging" id="toc-example-3-averaging" class="nav-link" data-scroll-target="#example-3-averaging">Example 3: Averaging</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#checking-missing-values" id="toc-checking-missing-values" class="nav-link" data-scroll-target="#checking-missing-values">Checking missing values</a></li>
+  <li><a href="#assessing-a-relationship" id="toc-assessing-a-relationship" class="nav-link" data-scroll-target="#assessing-a-relationship">Assessing a relationship</a>
+  <ul class="collapse">
+  <li><a href="#controlled-comparison" id="toc-controlled-comparison" class="nav-link" data-scroll-target="#controlled-comparison">Controlled comparison</a></li>
+  </ul></li>
+  <li><a href="#saving-data" id="toc-saving-data" class="nav-link" data-scroll-target="#saving-data">Saving data</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./surveys.html">Class surveys</a></li><li class="breadcrumb-item"><a href="./pilot_analysis.html">Pilot import and analyses</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Pilot import and analyses</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This page offers some additional code and examples for manipulating the pilot survey data.</p>
+<p>As always, you’ll want to load the <code>RCPA3</code> package at the start of your analysis so you can use the commands from the workbook:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RCPA3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="importing-the-data" class="level1">
+<h1>Importing the data</h1>
+<p>The results of the pilot analysis are stored on github in a <code>.rds</code> file, so before you can use them, you’ll need import these into R. Since the files are hosted online, you can access them from within R by just running the code below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this string is just a link to a web page that holds the data: </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>loc <span class="ot">&lt;-</span> <span class="fu">url</span>(<span class="st">'https://github.com/Neilblund/GVPT-201-Site/raw/refs/heads/main/Rdata/pilot_fmted.rds'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># read RDS reads the data from the URL into R:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>pilot<span class="ot">&lt;-</span><span class="fu">readRDS</span>(loc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that I’m assigning the data to a variable called <code>pilot</code>, so I can access specific columns using the <code>pilot$[some column name]</code>. For example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>Q4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] Some college, but no degree High school diploma or GED 
+ [3] Some college, but no degree Some college, but no degree
+ [5] High school diploma or GED  High school diploma or GED 
+ [7] Some college, but no degree Some college, but no degree
+ [9] High school diploma or GED  &lt;NA&gt;                       
+7 Levels: Some high school or less ... Prefer not to say</code></pre>
+</div>
+</div>
+<section id="applying-a-new-variable-label" class="level2">
+<h2 class="anchored" data-anchor-id="applying-a-new-variable-label">Applying a new variable label</h2>
+<p>The pilot data set includes the exact wording of each question as a variable label. You’ll see these automatically when you use functions like <code>freqC</code>, but you can also view them by using <code>Hmisc::label(variable_name)</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Hmisc<span class="sc">::</span><span class="fu">label</span>(pilot<span class="sc">$</span>Q6) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "How old are you (in years)?"</code></pre>
+</div>
+</div>
+<p>If you have created a new variable, or if you want to replace an existing label with something shorter, you can just use <code>Hmisc::label(varname) &lt;- "New label"</code>. For example, the label for <code>Q19_1</code> is really long and might not even fit on a plot, so I can assign a new shorter label to it like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Hmisc<span class="sc">::</span><span class="fu">label</span>(pilot<span class="sc">$</span>Q19_1) <span class="ot">&lt;-</span> <span class="st">"Support for electing president by popular vote"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And now we can view the label again to check that our code worked:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Hmisc<span class="sc">::</span><span class="fu">label</span>(pilot<span class="sc">$</span>Q19_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Support for electing president by popular vote"</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="recoding-variables" class="level1">
+<h1>Recoding Variables</h1>
+<p>There are likely a number of cases where you will want to remove, collapse, or reorder categories of a survey response. There are a variety of methods for doing this kind of operation, and it can be a little tricky. If you’re looking for more guidance you should consult Chapter 3 of your workbook.</p>
+<section id="dropping-levels" class="level2">
+<h2 class="anchored" data-anchor-id="dropping-levels">Dropping levels</h2>
+<p>Many of the survey questions allow responses that are mostly ordinal except for a “Not sure” response that shows up as a final response option. Leaving this “Not sure” option in place breaks the ordering of our otherwise ordinal question, so we’ll often treat these answers as <code>NA</code> values (or combine them with another category)</p>
+<p>For instance, <code>Q37</code> asks respondents to rank their own political views on a scale from <code>Far left</code> to <code>Far right</code>, but a small number of respondents said they were <code>Not sure</code> where they fit on this scale. We’ll generally want to drop or reassign these responses so we can treat <code>Q37</code> as an ordered variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(pilot<span class="sc">$</span>Q37)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Far left"     "Left"         "Center-left"  "Center"       "Center-right"
+[6] "Right"        "Far right"    "Not sure"    </code></pre>
+</div>
+</div>
+<p>One way we can get rid of these “Not sure” responses is by creating a new factor variable that doesn’t include “Not sure” as a valid level. This will cause those responses to automatically become <code>NA</code> values, which we can then easily ignore when we run a calculation on Q37.</p>
+<p>In plain English, the code below is saying:</p>
+<p>“Make a new column in the pilot dataframe called ‘lr_position’. The new variable will be an ordered factor variable with all the same levels from Q37 except for ‘Not sure’”</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The same levels in the SAME ORDER they appear when I run levels(pilot$Q37) </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>newlevels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Far left"</span>, <span class="st">"Left"</span>, <span class="st">"Center-left"</span>, <span class="st">"Center"</span>, <span class="st">"Center-right"</span>, <span class="st">"Right"</span>,<span class="st">"Far right"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>lr_position <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="at">x=</span>pilot<span class="sc">$</span>Q37,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">ordered =</span><span class="cn">TRUE</span>,            </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                            <span class="at">levels =</span> newlevels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note here that there are now zero “Not sure” responses:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># table just makes a simple frequency table</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(pilot<span class="sc">$</span>lr_position)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Far left"     "Left"         "Center-left"  "Center"       "Center-right"
+[6] "Right"        "Far right"   </code></pre>
+</div>
+</div>
+<p>This kind of recoding is easy to mess up, so its always a good idea to check your results after you finish. You can use <code>View(pilot)</code> to bring up the data viewer and browse your results, or you can use <code>freqC</code> to get a frequency table, or just use the basic <code>table</code> function and check to make sure your results match your expectations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pilot<span class="sc">$</span>Q37)  <span class="co"># 9 not sure responses</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Far left         Left  Center-left       Center Center-right        Right 
+          27           88           64           22           34           12 
+   Far right     Not sure 
+           3            9 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pilot<span class="sc">$</span>lr_position)  <span class="co"># the not sure responses are absent here, but everything else is identical</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Far left         Left  Center-left       Center Center-right        Right 
+          27           88           64           22           34           12 
+   Far right 
+           3 </code></pre>
+</div>
+</div>
+</section>
+<section id="combining-levels" class="level2">
+<h2 class="anchored" data-anchor-id="combining-levels">Combining levels</h2>
+<p>In some cases we may want to simplify our analyses by combining certain categories of a response. For instance, only 3 respondents said that social media had an “Extremely positive” effect on politics. This might not be enough people for a meaningful inference, so we could decide to collapse this five category response into three categories: negative, neutral, and positive.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table quarto-disable-processing="true" class=" lightable-classic table table-striped table-hover" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Do believe that social media has a positive or negative influence on American politics?</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Q52 </th>
+   <th style="text-align:right;"> n </th>
+   <th style="text-align:left;"> percent </th>
+   <th style="text-align:left;"> cumulative percent </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Extremely negative </td>
+   <td style="text-align:right;"> 44 </td>
+   <td style="text-align:left;"> 17.1% </td>
+   <td style="text-align:left;"> 17.1% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Somewhat negative </td>
+   <td style="text-align:right;"> 131 </td>
+   <td style="text-align:left;"> 50.8% </td>
+   <td style="text-align:left;"> 67.8% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Neither positive nor negative </td>
+   <td style="text-align:right;"> 53 </td>
+   <td style="text-align:left;"> 20.5% </td>
+   <td style="text-align:left;"> 88.4% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Somewhat positive </td>
+   <td style="text-align:right;"> 27 </td>
+   <td style="text-align:left;"> 10.5% </td>
+   <td style="text-align:left;"> 98.8% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Extremely positive </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> 1.2% </td>
+   <td style="text-align:left;"> 100.0% </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>Conceptually, I want to do a transformation that remaps the values like this:</p>
+<ul>
+<li>Extremely negative → negative</li>
+<li>Somewhat negative → negative</li>
+<li>Neither positive nor negative → neutral</li>
+<li>Somewhat positive → positive</li>
+<li>Extremely positive → positive</li>
+</ul>
+<p>There are actually several ways to do this. I’ve put several options in the tab below.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Using logical statements</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Using factor() with labels =</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Using the forcats package</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>We can use boolean operators to selectively assign values to a vector and then declare that vector as a factor variable. To make this work, I’ll start with an empty factor called <code>socmed_fx</code> and then I’ll assign values to the column based on the current value of <code>Q52</code>.</p>
+<p>In plain English, that first line of assigning values means “if <code>pilot$Q52</code> is”Extremely negative” then <code>pilot$socmed_fx</code> should be “negative”</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creating an empty factor variable with all the levels I intend to include in order</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>socmed_fx <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="cn">NA</span>, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">'negative'</span>,<span class="st">"neutral"</span>, <span class="st">"positive"</span>), <span class="at">ordered=</span><span class="cn">TRUE</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># assigning values</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>socmed_fx[pilot<span class="sc">$</span>Q52 <span class="sc">==</span> <span class="st">"Extremely negative"</span>] <span class="ot">&lt;-</span> <span class="st">"negative"</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>socmed_fx[pilot<span class="sc">$</span>Q52 <span class="sc">==</span> <span class="st">"Somewhat negative"</span>]  <span class="ot">&lt;-</span> <span class="st">"negative"</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>socmed_fx[pilot<span class="sc">$</span>Q52 <span class="sc">==</span> <span class="st">"Neither positive nor negative"</span>] <span class="ot">&lt;-</span> <span class="st">"neutral"</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>socmed_fx[pilot<span class="sc">$</span>Q52 <span class="sc">==</span> <span class="st">"Somewhat positive"</span>]  <span class="ot">&lt;-</span> <span class="st">"positive"</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>socmed_fx[pilot<span class="sc">$</span>Q52 <span class="sc">==</span> <span class="st">"Extremely positive"</span>] <span class="ot">&lt;-</span> <span class="st">"positive"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>We can also use the <code>factor</code> function to perform this re-mapping. In some cases this can be a little more concise but you have to pay very close attention to the ordering of your original factor variable.</p>
+<p>To make this work, I’m going to create a vector called <code>new_labels</code> that lists, <strong>in order</strong>, the new label that we want to assign to each old value of <code>Q52</code>. Once I’ve got this, I’ll run <code>factor</code> again, and include <code>labels = new_labels</code> to assign the new value labels to my new factor variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>new_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"negative"</span>, <span class="st">"negative"</span>, <span class="st">"neutral"</span>, <span class="st">"positive"</span>, <span class="st">"positive"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>socmed_fx <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="at">x=</span>pilot<span class="sc">$</span>Q52, </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">labels =</span> new_labels,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">ordered =</span><span class="cn">TRUE</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>                            </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>                            )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p>Finally, if you’re comfortable with installing and loading R packages, the <code>forcats</code> package has a nice alternative method for doing this kind of recode that might be a little more intuitive. The function is called <code>fct_recode</code> and the syntax will just be <code>fct_recode(old_variable, "new label" = "old label" ...)</code>. Here’s an example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remember to uncomment and then run the line below to install the package:</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('forcats')</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># then you'll need to run library(forcats) each time you re-open Rstudio </span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># in order to load the package:</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>socmed_fx <span class="ot">&lt;-</span><span class="fu">fct_recode</span>(</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  pilot<span class="sc">$</span>Q52,</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"negative"</span> <span class="ot">=</span> <span class="st">"Extremely negative"</span>,</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"negative"</span> <span class="ot">=</span> <span class="st">"Somewhat negative"</span>,</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"neutral"</span> <span class="ot">=</span> <span class="st">"Neither positive nor negative"</span>  ,</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"positive"</span> <span class="ot">=</span> <span class="st">"Somewhat positive"</span> ,</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"positive"</span> <span class="ot">=</span> <span class="st">"Extremely positive"</span> </span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>Regardless of what method you use, you’ll want to check your results after you do your recoding and make sure they align with your expectations:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pilot<span class="sc">$</span>Q52)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+           Extremely negative             Somewhat negative 
+                           44                           131 
+Neither positive nor negative             Somewhat positive 
+                           53                            27 
+           Extremely positive 
+                            3 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pilot<span class="sc">$</span>socmed_fx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+negative  neutral positive 
+     175       53       30 </code></pre>
+</div>
+</div>
+</section>
+<section id="splitting-a-numeric-variable" class="level2">
+<h2 class="anchored" data-anchor-id="splitting-a-numeric-variable">Splitting a numeric variable</h2>
+<p>We might also want to recode numeric variables into a smaller number of categories. We can do this using the <code>transformC</code> function from the <code>RCPA3</code> package. For instance, Q34_1 - Q34_5 are all feeling thermometer variables that ask respondents to rate their level of agreement or disagreement with a set of policy proposals. What if I wanted to split <code>Q34_5</code> up into an ordered categorical variable?</p>
+<p>We can use the <code>cut</code> option of <code>transformC</code> to cut the variable into five smaller groups:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>expand_scotus<span class="ot">&lt;-</span><span class="fu">transformC</span>(<span class="at">type=</span><span class="st">'cut'</span>,               <span class="co"># use this option to cut a number into groups</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">data=</span>pilot,             <span class="co"># the data set </span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">x=</span>Q34_5,                <span class="co"># the variable we're cutting</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">cut =</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">40</span>,<span class="dv">60</span>,<span class="dv">80</span>),   <span class="co"># the cutoff points</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">confirm=</span>F)              <span class="co"># this turns off a prompt that asks us to confirm before executing the command</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># checking out the values </span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pilot<span class="sc">$</span>expand_scotus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[  0, 20) [ 20, 40) [ 40, 60) [ 60, 80) [ 80,100] 
+       44        35        59        48        37 </code></pre>
+</div>
+</div>
+<p>Now we might also want to add some descriptive labels to this variable in order to make it a little more coherent in a plot or table. To do this we modify the <code>levels</code> attribute with a vector of labels that we want to assign to each level of the variable:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(pilot<span class="sc">$</span>expand_scotus) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Strongly Disagree"</span>, <span class="st">"Disagree"</span>, <span class="st">"Neutral"</span>, <span class="st">"Agree"</span>, <span class="st">"Strongly Agree"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pilot<span class="sc">$</span>expand_scotus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Strongly Disagree          Disagree           Neutral             Agree 
+               44                35                59                48 
+   Strongly Agree 
+               37 </code></pre>
+</div>
+</div>
+</section>
+<section id="making-a-dummy" class="level2">
+<h2 class="anchored" data-anchor-id="making-a-dummy">Making a dummy</h2>
+<p>Finally, in some cases we’ll want to “dummy code” some variables to make them dichotomous.</p>
+<p>One way to do this is using <code>transformC</code> with the <code>type='dummy'</code> option. Here’s an example of recoding the survey question about gender ID so that women are coded as a “1” and everyone else (including “prefer not to say” or “other”) are coded as “0”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>female_dummy <span class="ot">&lt;-</span> <span class="fu">transformC</span>(<span class="at">type =</span> <span class="st">'dummy'</span>,</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">x =</span> pilot<span class="sc">$</span>Q7,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">response =</span> <span class="st">'Female'</span>,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">confirm =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co"># check the results:</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pilot<span class="sc">$</span>female_dummy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  0   1 
+108 149 </code></pre>
+</div>
+</div>
+<p>Another way to do this is by writing a logical expression and then converting it to a numeric variable. Converting a logical expression to numeric will automatically change all <code>FALSE</code> values to zero and all <code>TRUE</code> values to one:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># just an illustration! This isn't code you need to use anywhere</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>boolean_vect <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(boolean_vect)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0 0 0 1 1 1 1</code></pre>
+</div>
+</div>
+<p>These two approaches are equivalent except for some additional options offered by <code>transformC</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>female_dummy <span class="ot">=</span> <span class="fu">as.numeric</span>(pilot<span class="sc">$</span>Q7 <span class="sc">==</span><span class="st">"Female"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And don’t forget that taking the mean of a dummy will return the proportion of “1”s in that dummy variable. So we can get the % of women respondents like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(pilot<span class="sc">$</span>female_dummy, <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5797665</code></pre>
+</div>
+</div>
+<p>I could also create dummy variables for a more complex range of conditions. For instance, here’s how I could create a dummy variable that was equal to 1 for women who voted in 2024 and 0 for everyone else:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>female_voted_dummy <span class="ot">=</span> <span class="fu">as.numeric</span>(pilot<span class="sc">$</span>Q14  <span class="sc">==</span> <span class="st">"Yes"</span> <span class="sc">&amp;</span> pilot<span class="sc">$</span>Q7 <span class="sc">==</span><span class="st">"Female"</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pilot<span class="sc">$</span>female_voted_dummy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  0   1 
+128 126 </code></pre>
+</div>
+</div>
+</section>
+<section id="combining-variables" class="level2">
+<h2 class="anchored" data-anchor-id="combining-variables">Combining Variables</h2>
+<p>In some cases it makes sense to combine one or more questions on a related topic in order to get an aggregate measure of attitudes or identify some complex combination of responses. Here are two examples of creating a new variable by combining responses from two or more survey items.</p>
+<section id="example-1-condition-based-on-multiple-variables" class="level3">
+<h3 class="anchored" data-anchor-id="example-1-condition-based-on-multiple-variables">Example 1: Condition based on multiple variables</h3>
+<p>What if I wanted to do something like create an indicator variable for Apple users who also use social media every day to get news about politics? I could do this by using a logical statement similar to the one I used in the section on combining variables. However, in this case, I’ll write out multiple conditions and chain them together using an <code>&amp;</code> operator.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>sm_apple <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>sm_apple[pilot<span class="sc">$</span>Q50 <span class="sc">==</span> <span class="st">"Daily"</span> <span class="sc">&amp;</span> pilot<span class="sc">$</span>apple <span class="sc">==</span> <span class="st">"Apple user"</span> ] <span class="ot">&lt;-</span> <span class="st">"Daily SM user + Apple OS"</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>sm_apple[pilot<span class="sc">$</span>Q50 <span class="sc">!=</span> <span class="st">"Daily"</span> <span class="sc">&amp;</span> pilot<span class="sc">$</span>apple <span class="sc">!=</span> <span class="st">"Apple user"</span> ] <span class="ot">&lt;-</span> <span class="st">"Less than daily SM user + Non-Apple OS"</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>sm_apple[pilot<span class="sc">$</span>Q50 <span class="sc">!=</span> <span class="st">"Daily"</span> <span class="sc">&amp;</span> pilot<span class="sc">$</span>apple <span class="sc">==</span> <span class="st">"Apple user"</span> ] <span class="ot">&lt;-</span> <span class="st">"Less than daily SM user + Apple user"</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>sm_apple[pilot<span class="sc">$</span>Q50 <span class="sc">==</span> <span class="st">"Daily"</span> <span class="sc">&amp;</span> pilot<span class="sc">$</span>apple <span class="sc">!=</span> <span class="st">"Apple user"</span> ] <span class="ot">&lt;-</span> <span class="st">"Less than daily SM user+ Non-Apple user"</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pilot<span class="sc">$</span>sm_apple)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+               Daily SM user + Apple OS    Less than daily SM user + Apple user 
+                                     11                                      36 
+ Less than daily SM user + Non-Apple OS Less than daily SM user+ Non-Apple user 
+                                    151                                      60 </code></pre>
+</div>
+</div>
+</section>
+<section id="example-2-additive-index" class="level3">
+<h3 class="anchored" data-anchor-id="example-2-additive-index">Example 2: Additive index</h3>
+<p>For instance, Q49_1 through Q49_5 ask about a respondent’s level of trust in various institutions. We could combine all of these questions into an additive index of “general” social trust.</p>
+<p>There’s a number of ways we could approach this problem, but for this example, I’ll just convert this ordered factor variable into a number using <code>as.numeric</code>. Since the factor levels are already ordered from least trusting to most trusting, I can add all of these together to get a simple additive index of the level of trust expressed by each respondent:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>total_trust <span class="ot">&lt;-</span>  </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>(pilot<span class="sc">$</span>Q49_1)  <span class="sc">+</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>(pilot<span class="sc">$</span>Q49_2)  <span class="sc">+</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>(pilot<span class="sc">$</span>Q49_3)  <span class="sc">+</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>(pilot<span class="sc">$</span>Q49_4) <span class="sc">+</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>(pilot<span class="sc">$</span>Q49_5) </span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(total_trust)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+   5.00   12.00   14.00   13.64   16.00   19.00      27 </code></pre>
+</div>
+</div>
+</section>
+<section id="example-3-averaging" class="level3">
+<h3 class="anchored" data-anchor-id="example-3-averaging">Example 3: Averaging</h3>
+<p>What if we want average over a set of numeric responses? For instance, we have a series of five questions that all ask people to rate Trump’s cabinet picks and advisers on a 0 to 100 scale, we might decide we want to calculate an average across all of these officials to construct a metric of “general support for the Trump administration”.</p>
+<p>As usual, there’s more than one way to approach this problem, but here’s one solution that selects the five columns that ask about Trump’s picks, and then uses <code>rowMeans</code> to calculate the average across each row of data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a vector of column names we want to extract: </span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>nominee_cols<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Q25_1'</span>, <span class="st">'Q25_2'</span>,<span class="st">'Q25_3'</span>, <span class="st">'Q25_4'</span>, <span class="st">'Q25_5'</span>)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a new data frame from pilot that only contains the five columns listed above:</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>nominees<span class="ot">&lt;-</span>pilot[,nominee_cols]</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co"># rowMeans will calculate an average across each row of the data</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>avg_nominees<span class="ot">&lt;-</span><span class="fu">rowMeans</span>(nominees, <span class="at">na.rm=</span>T)</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="co"># putting the result in its own column</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>avg_nominees <span class="ot">&lt;-</span> avg_nominees</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can take a look at the distribution of the overall thermometer score:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pilot<span class="sc">$</span>avg_nominees, <span class="at">main=</span><span class="st">'Average Trump officials rating (0 - 100 scale)'</span>, <span class="at">xlab =</span><span class="st">'Avg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="pilot_analysis_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now we can take a look at the relationship between party ID and average thermometer ratings:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compmeansC</span>(<span class="at">dv=</span> avg_nominees,  <span class="at">iv=</span>party_id, <span class="at">data=</span>pilot,</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">xlab =</span> <span class="st">'Party ID'</span>, </span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">ylab =</span> <span class="st">'Average thermometer'</span>,</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">'Average Trump admin. official rating (0 - 100 scale)'</span>,</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">plot=</span><span class="cn">FALSE</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>           )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>===========================================================================
+                         Mean Comparison Analysis
+===========================================================================
+
+
+Table: Mean Values of avg_nominees by party_id
+
+                               Mean     N   St. Dev.
+---------------------------  ------  ----  ---------
+Strong Democrat               10.82    79      14.98
+Not very strong Democrat      19.00    43      20.21
+Independent Democrat          12.14    28      16.50
+Independent                   23.76    19      22.58
+Independent Republican        55.20    16      22.49
+Not very strong Republican    52.10    14      32.43
+Strong Republican             70.51    10      21.46
+Total                         22.88   209      26.25</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="checking-missing-values" class="level1">
+<h1>Checking missing values</h1>
+<p>Generally, missing data in R will be represented as <code>NA</code> values. Running use <code>is.na(x)</code> will return <code>TRUE</code> if an observation is missing and <code>FALSE</code> if the observation is not missing.</p>
+<p>If you use a numeric function on a logical value in R, <code>TRUE</code> values will get converted to 1 and <code>FALSE</code> values will get converted to 0. So if we wanted to know how many missing responses we had for Question 9, we could just <code>sum</code> the results of <code>is.na(pilot$Q9)</code> :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(pilot<span class="sc">$</span>Q9))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 23</code></pre>
+</div>
+</div>
+<p>What we do with this information is another question entirely, but having lots of missing data can pose issues for your analyses.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplotC</span>(<span class="at">dv =</span> total_trust, <span class="at">iv=</span>pilot<span class="sc">$</span>apple, </span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">xlab=</span><span class="st">"Apple user?"</span>, </span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">y=</span><span class="st">'Additive index of trust'</span>,</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">main =</span> <span class="st">'Social Trust by operating system'</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>         )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>================================================================================
+                       Making Comparisons with Box Plots
+================================================================================</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="pilot_analysis_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">#compmeansC( dv = trust_gov, iv=pilot$apple)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="assessing-a-relationship" class="level1">
+<h1>Assessing a relationship</h1>
+<p>I’m going to look at how responses to Q52 (belief that social media has a negative impact), on responses to (support for the forced sale of TikTok). My hypothesis is that people who believe social media is harmful will be more likely to support the forced sale. Since both these outcomes are categorical, I’m going to use a crosstab to explore the relationship.</p>
+<p>After analyzing my basic descriptive statistics for each variable, I conclude that it makes sense to collapse some of the response categories together to simplify my analysis and to get around the problem of cells with very few observations (only three people said social media had an “Extremely positive” effect!).</p>
+<p>So I collapse the responses to both questions to create dichotomous variables for each item:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># making a dichotomous variable for </span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>sm_negative <span class="ot">&lt;-</span> <span class="fu">factor</span>(pilot<span class="sc">$</span>Q52, </span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">ordered =</span><span class="cn">TRUE</span>,</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Negative"</span>, <span class="st">"Negative"</span>, <span class="st">"Not negative"</span>, <span class="st">"Not negative"</span>,  <span class="st">"Not negative"</span>))</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>tiktok_ban <span class="ot">&lt;-</span> <span class="fu">factor</span>(pilot<span class="sc">$</span>Q8, </span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>                           <span class="at">ordered =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Opposed"</span>,<span class="st">"Opposed"</span>,<span class="st">"Opposed"</span>,<span class="st">"Not opposed"</span>, <span class="st">"Not opposed"</span>, <span class="st">"Not opposed"</span>, <span class="st">"Not opposed"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then I’ll create a cross tab so I can look at the effect of <code>sm_negative</code> on supporting the TikTok ban:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Is there a relationship here? </span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">crosstabC</span>(<span class="at">dv =</span> tiktok_ban, </span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">iv =</span> sm_negative, </span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">data=</span>pilot,</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">plot =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">compact =</span><span class="cn">TRUE</span> <span class="co"># removes the raw counts row (slightly more readable table)</span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>          </span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>===========================================================================
+                         Cross-Tabulation Analysis
+===========================================================================
+
+
+Table: Cross-Tabulation of tiktok_ban and sm_negative
+
+                 Negative   Not negative   Totals
+--------------  ---------  -------------  -------
+% Opposed           52.57          69.51    57.98
+% Not opposed       47.43          30.49    42.02
+Count              175.00          82.00   257.00</code></pre>
+</div>
+</div>
+<p>Remember that the way we read this output is by looking at the difference across each level of the IV. So the effect of believing Social media has a negative impact relative to believing it has a non-negative impact is a <span class="math inline">\(52.57 -   69.51 = -16.94\)</span> percentage point decrease in opposition to the TikTok ban.</p>
+<section id="controlled-comparison" class="level3">
+<h3 class="anchored" data-anchor-id="controlled-comparison">Controlled comparison</h3>
+<p>There’s a zero-order relationship between my IV and DV, but there’s a chance that its spurious: perhaps the reason for the observed relationship is that people who don’t use social media are both more likely to think it is harmful and more likely to support banning it. To rule out this possibility, we’ll use responses to Q50, which asks how often respondents use social media to get news. Once again, we’re going to combine some categories to simplify the analysis: we’ll split up the responses to this question in to “Every day” and “Less than every day”:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>daily_sm <span class="ot">&lt;-</span> <span class="fu">factor</span>(pilot<span class="sc">$</span>Q50 <span class="sc">==</span> <span class="st">"Daily"</span>, </span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">ordered =</span><span class="cn">TRUE</span>,</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Less than every day"</span>, <span class="st">"Every day"</span>)</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then we’ll create out controlled cross tab and assess the results:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Is there a relationship here? </span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">crosstabC</span>(<span class="at">dv =</span> tiktok_ban, </span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">iv =</span> sm_negative, </span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">z =</span> daily_sm,</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">data=</span>pilot,</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">plot =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">compact =</span> <span class="cn">TRUE</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>          <span class="co"># removes the raw counts row (slightly more readable table)</span></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>          </span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>===========================================================================
+                   Controlled Cross-Tabulation Analysis
+===========================================================================
+
+
+Table: Cross-Tabulation of tiktok_ban and sm_negative, controlling for daily_sm
+
+                 Less than every day: Negative   Not negative   Every day: Negative   Not negative   | Totals
+--------------  ------------------------------  -------------  --------------------  -------------  ---------
+% Opposed                                50.00          67.74                 58.82          75.00      57.98
+% Not opposed                            50.00          32.26                 41.18          25.00      42.02
+Count                                   124.00          62.00                 51.00          20.00     257.00</code></pre>
+</div>
+</div>
+<ul>
+<li>Effect for non-daily users: <span class="math inline">\(50.00    - 67.74 = -17.74\)</span></li>
+<li>Effect for daily users: <span class="math inline">\(58.82 -  75.00 = -16.8\)</span></li>
+<li>Average partial effect of negative social media view (controlling for social media use): <span class="math inline">\((-17.74 + -16.18)/2 =  -16.96\)</span></li>
+</ul>
+<p>Our effect is still present, the direction of the effect is the same at both levels of the control, and the strength of the effect is only very slightly different. Given these results, it appears the relationship here is additive: both social media use and views of social media’s impact on society independently influence support for a TikTok ban.</p>
+</section>
+</section>
+<section id="saving-data" class="level1">
+<h1>Saving data</h1>
+<p>In general, I recommend that you save your code rather than trying to save data itself, but if you do want to have a local copy of the pilot data that you can alter as needed, you can save an R object by entering <code>saveRDS(object, file='filename.rds')</code>. For example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(pilot, <span class="at">file=</span><span class="st">'my_pilot_copy.rds'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then, to restore the data, you would just load it back in by using the <code>readRDS</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>pilot_data <span class="ot">&lt;-</span><span class="fu">readRDS</span>(<span class="st">'my_pilot_copy.rds'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>The :: in <code>Hmisc::label</code> is a way to use a function from a package without having to load the entire package with the <code>library</code> function. You’ll typically see this when we just need to use one function from a package, or when the function shares a name with a function from another package.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
