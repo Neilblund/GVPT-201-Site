@@ -172,10 +172,59 @@ pilot$non_white_or_hispanic <- as.numeric(pilot$Q2 != "White or Caucasian" | pil
 freqC(pilot$non_white_or_hispanic)
 
 
-
-
 #6. Extra Code##################################################################
 # You don't need this for this assignment! But it might be handy later on.
+
+## Making an additive index ----
+# Feeling thermometer variables are already numeric, so you can easily convert
+# these to and additive index by simply adding them together (or averaging):
+
+# make a vector containing the names of the columns you want to use:
+spend_questions<-c("Q36_1", "Q36_2", "Q36_3", "Q36_4", "Q36_5", "Q36_6", "Q36_7")
+
+# using subsetting to see the first 10 rows of the spending question response:
+pilot[1:10,spend_questions]
+
+total_spend <-  rowMeans(pilot[,spend_questions], na.rm=T)
+
+# view a histogram: 
+hist(total_spend, 
+     xlab='Average spending thermometer',  # change axis label
+     main='') # remove title
+
+# You can also mean-center each variable and divide by its standard deviation. 
+# This would allow you to combine numeric variables even if they have different
+# scalings:
+total_spend_scaled <-rowMeans(scale(pilot[,spend_questions]), na.rm=T)
+
+
+hist(total_spend_scaled, 
+     xlab ='Average spending thermometer (Scaled)', # change axis label
+     main = '' # remove title
+     )
+
+# You can also create additive indices from ordered factors if you convert them
+# to numeric variables first (and make sure they all have the same "direction")
+
+trust_questions<-data.frame(
+  'trust_fed' = as.numeric(pilot$Q49_1), 
+  'trust_relig' = as.numeric(pilot$Q49_2), 
+  'trust_media' = as.numeric(pilot$Q49_3), 
+  'trust_pol' = as.numeric(pilot$Q49_4), 
+  'trust_fam' = as.numeric(pilot$Q49_5)
+  )
+
+trust_total <- rowSums(trust_questions)
+
+hist(trust_total, 
+     xlab='Additive index of social trust', 
+     main=''
+     )
+
+# Note that the additive index has a more normal distribution than an individual 
+# question. We would also expect it to have higher reliability if the scale is 
+# a good one.
+
 
 ## Using a regular expression----
 # What if I want to create a dummy variable that includes anyone who listed "Asian" 
