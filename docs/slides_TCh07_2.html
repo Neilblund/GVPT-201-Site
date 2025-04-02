@@ -2228,6 +2228,7 @@ T = \frac{9.4}{1.2} = 7.8
 <p>So what’s the probability that people born after the Cold War ended would have a mean FT 9.4 points <strong>higher</strong> than those born after if the null hypothesis is true?</p>
 <div class="fragment">
 <div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">pt</span>(<span class="fl">7.8</span>, <span class="at">df=</span><span class="dv">650</span>, <span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.236567e-14</code></pre>
 </div>
@@ -2244,13 +2245,14 @@ T = \frac{9.4}{1.2} = 7.8
 <p>What’s the probability that people born after the Cold War ended would have a mean FT 9.4 points <strong>higher or lower</strong> than those born after if the null hypothesis is true?</p>
 <div class="fragment">
 <div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">pt</span>(<span class="fl">7.8</span>, <span class="at">df=</span><span class="dv">650</span>, <span class="at">lower.tail =</span> F) <span class="sc">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.473135e-14</code></pre>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p>Very small!</p>
+<p>Still significant</p>
 </div>
 </section>
 
