@@ -1724,6 +1724,14 @@ border: 0;
 </div>
 
 </section>
+<section id="notes-and-reminders" class="title-slide slide level1 center">
+<h1>Notes and reminders</h1>
+<ul>
+<li><p>Final paper requirements are now available on ELMS.</p></li>
+<li><p>I’ll post an outline/example over the weekend.</p></li>
+</ul>
+</section>
+
 <section id="regression-assumptions-and-interpretations" class="title-slide slide level1 center">
 <h1>Regression Assumptions and interpretations</h1>
 
@@ -2153,10 +2161,12 @@ border: 0;
 <h3>Omitted variables</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
+<div>
 <ul>
-<li><p>% Catholic appears to matter for the percentage of people who smoke in a state</p></li>
-<li><p>But this is probably spurious: cigarette taxes are correlated with both % Catholic and with % smokers, so controlling for this confounding makes the original relationship insignificant.</p></li>
+<li class="fragment"><p>% Catholic appears to matter for the percentage of people who smoke in a state</p></li>
+<li class="fragment"><p>But this is probably spurious: cigarette taxes are correlated with both % Catholic and with % smokers, so controlling for this confounding makes the original relationship insignificant.</p></li>
 </ul>
+</div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
@@ -3728,7 +3738,7 @@ window.QuartoSupport = function () {
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
+    <script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","descPosition":"bottom","selector":".lightbox","closeEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;
